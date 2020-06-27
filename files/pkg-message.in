@@ -1,0 +1,53 @@
+[
+{ type: install
+  message: <<EOM
+CONFIGURATION:
+-------------
+1. Enable services at startup in the /etc/rc.conf file:
+  postgresql_enable="YES"
+  nginx_enable="YES"
+  rabbitmq_enable="YES"
+  supervisord_enable="YES"
+
+  Optionally in case of a jail with local IP and no internet access:
+    update /etc/hosts in order to resolve your nextcloud server to its local IP
+
+2. Configure PostgreSQL server (don't forget to change the password):
+  # service postgresql initdb
+  # service postgresql start
+  # psql -U postgres -c "CREATE DATABASE onlyoffice;"
+  # psql -U postgres -c "CREATE USER onlyoffice WITH password 'onlyoffice';"
+  # psql -U postgres -c "GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;"
+  # psql -hlocalhost -Uonlyoffice -d onlyoffice -f %%WWWDIR%%/documentserver/server/schema/postgresql/createdb.sql
+
+  Optionally in case of a jail with local IP:
+    update /var/db/postgres/data13/pg_hba.conf accordingly
+
+3. Configure rabbitmq by setting a password to the guest account:
+  # service rabbitmq start
+  # rabbitmqctl change_password guest
+  and change it in /usr/local/www/onlyoffice/documentserver/server/Common/config/default.json accordingly
+
+4. Setup supervisord in order to execute documentserver services:
+  - let supervisord.conf load files contained in this directory by adding to
+    /usr/local/etc/supervisord.conf:
+[include]
+files = %%ETCDIR%%/onlyoffice/documentserver/supervisor/*.conf
+
+  - start supervisord:
+    # service supervisord start
+
+5. XXX Setup nginx:
+  - nginx conf files are located in: %%ETCDIR%%/documentserver/nginx/includes
+
+  - start nginx:
+    # service nginx start
+
+8. Follow the following doc If you want to use Onlyoffice with Nextcloud:
+  - https://api.onlyoffice.com/editors/nextcloud
+
+7. Enjoy.
+
+EOM
+}
+]

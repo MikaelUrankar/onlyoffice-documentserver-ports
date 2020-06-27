@@ -1,0 +1,14 @@
+# Add the following line to:
+#   /usr/ports/UIDS ds:*:303:303::0:0:Onlyoffice pseudo-user:/usr/local/www/onlyoffice/documentserver:/usr/sbin/nologin
+#   /usr/ports/GIDS ds:*:303:www
+
+# Should I install bin/documentserver-letsencrypt.sh?
+gsed:textproc/gsed		(required by documentserver-letsencrypt.sh documentserver-static-gzip.sh documentserver-update-securelink.sh)
+curl:ftp/curl			(required by bin/documentserver-prepare4shutdown.sh)
+pwgen:sysutils/pwgen		(required by bin/documentserver-letsencrypt.sh)
+certbot:security/py-certbot	(required by bin/documentserver-letsencrypt.sh)
+
+Check if we need to ifdef linux || defined(__FreeBSD__)
+core/DesktopEditor/xml/libxml2/nanohttp.c (if defined(HAVE_NETDB_H) && defined(HOST_NOT_FOUND) && defined(linux))
+
+/usr/local/onlyofficedocumentserver/fonts is generated dynamically, depending on fonts installed on the system. Find a way to generate pkg-plist accordingly.
