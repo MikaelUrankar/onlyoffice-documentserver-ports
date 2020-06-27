@@ -11,7 +11,7 @@ LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # XXX llvm10
-# v8=6.8:lang/v8 \
+# v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
 # qmake, boost-libs, icu ...
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10
