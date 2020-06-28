@@ -16,7 +16,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10
 
-USES=		gmake
+USES=		gmake qt:5
+USE_QT=		qmake_build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
@@ -33,8 +34,7 @@ GH_TUPLE=	\
 USE_LDCONFIG=	yes
 
 do-build:
-# XXX doesn't work, need to cd ${WRKSRC} first?
-	${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} -C ${WRKSRC}/core
+	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 # XXX build / patch core-fonts, dict, sdkjs*, server, web-apps
 # https://github.com/ONLYOFFICE/DocumentServer/issues/79#issuecomment-582545158
 # https://github.com/ONLYOFFICE/DocumentServer/issues/79#issuecomment-583453517
