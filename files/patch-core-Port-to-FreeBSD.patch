@@ -175,31 +175,13 @@ index 424edb381..2b805e847 100644
 +core_freebsd {
 +    INCLUDEPATH += /usr/local/include
 +
-+    LIBS        += /usr/local/lib/libicuuc.so.67
-+    LIBS        += /usr/local/lib/libicudata.so.67
++    LIBS        += -licuuc
++    LIBS        += -licudata
 +}
 +
  core_windows {
      exists($$PWD/$$CORE_BUILDS_PLATFORM_PREFIX/icu) {
          INCLUDEPATH += $$PWD/$$CORE_BUILDS_PLATFORM_PREFIX/icu/include
-diff --git a/Common/3dParty/openssl/openssl.pri b/Common/3dParty/openssl/openssl.pri
-index 4d0779a5e..97bed9d38 100644
---- core/Common/3dParty/openssl/openssl.pri
-+++ core/Common/3dParty/openssl/openssl.pri
-@@ -1,3 +1,13 @@
-+core_freebsd {
-+
-+INCLUDEPATH += $$PWD/openssl/include
-+
-+QMAKE_LFLAGS += -fvisibility=hidden
-+LIBS += $$PWD/openssl/libssl.a
-+LIBS += $$PWD/openssl/libcrypto.a
-+
-+}
-+
- core_linux {
- 
- INCLUDEPATH += $$PWD/openssl/include
 diff --git a/Common/3dParty/v8/v8.pri b/Common/3dParty/v8/v8.pri
 index a59f0b569..822371cb0 100644
 --- core/Common/3dParty/v8/v8.pri
@@ -209,8 +191,8 @@ index a59f0b569..822371cb0 100644
      $$CORE_V8_PATH_INCLUDE/include
  
 +core_freebsd {
-+    LIBS += -L$$CORE_V8_PATH_LIBS -lv8_libplatform -lv8_libbase
-+    LIBS += -L$$CORE_V8_PATH_LIBS/third_party/icu -licui18n -licuuc
++    LIBS += -lv8_libplatform -lv8_libbase
++    LIBS += -licui18n -licuuc
 +}
 +
  core_windows {
@@ -225,8 +207,8 @@ index dc4536a4a..d286ac136 100644
  }
  
 +core_freebsd {
-+    LIBS += -L$$CORE_V8_PATH_LIBS -lv8_libplatform -lv8_libbase
-+    LIBS += -L$$CORE_V8_PATH_LIBS/third_party/icu -licui18n -licuuc
++    LIBS += -lv8_libplatform -lv8_libbase
++    LIBS += -licui18n -licuuc
 +}
 +
  core_linux {
@@ -285,8 +267,8 @@ index e07c164c7..c2ad08e31 100644
 +    message("freebsd-clang")
 +    CONFIG += core_freebsd
 +    CONFIG += core_freebsd_64
-+    QMAKE_CC = clang10
-+    QMAKE_CXX = clang++10
++    QMAKE_CC = ccache clang10
++    QMAKE_CXX = ccache clang++10
 +}
 +
  win32:contains(QMAKE_TARGET.arch, x86_64): {
@@ -811,13 +793,12 @@ diff --git a/DesktopEditor/xmlsec/test/OpenSSL_gui_test/OpenSSL_gui_test.pro b/D
 index caad5a190..ef4a21b10 100644
 --- core/DesktopEditor/xmlsec/test/OpenSSL_gui_test/OpenSSL_gui_test.pro
 +++ core/DesktopEditor/xmlsec/test/OpenSSL_gui_test/OpenSSL_gui_test.pro
-@@ -19,6 +19,11 @@ CORE_ROOT_DIR = $$PWD/../../../..
+@@ -19,6 +19,10 @@ CORE_ROOT_DIR = $$PWD/../../../..
  PWD_ROOT_DIR = $$PWD
  include($$CORE_ROOT_DIR/Common/base.pri)
  
 +core_freebsd {
 +    QMAKE_LFLAGS += -Wl,--rpath=./
-+    QMAKE_LFLAGS += -static-libstdc++ -static-libgcc
 +}
 +
  core_linux {

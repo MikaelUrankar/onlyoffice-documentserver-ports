@@ -1,5 +1,12 @@
 # $FreeBSD$
 
+# openssl.pri useless
+# DesktopEditor/raster/JBig2/source/LeptonLib/readfile.cpp
+# DesktopEditor/xmlsec/test/OpenSSL_gui_test/OpenSSL_gui_test.pro
+# Common/3dParty/openssl/openssl.pri
+# Common/3dParty/v8/v8.pri 
+# Common/3dParty/v8/v8_xp/v8.pri
+
 PORTNAME=	documentserver
 DISTVERSION=	5.5.3
 CATEGORIES=	lang
