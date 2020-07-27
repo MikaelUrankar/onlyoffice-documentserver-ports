@@ -1,0 +1,59 @@
+--- server/Makefile.orig	2020-07-27 19:10:56.766626000 +0200
++++ server/Makefile	2020-07-27 19:11:21.098712000 +0200
+@@ -94,39 +94,39 @@ build-date: $(GRUNT_FILES)
+ 
+ $(SPELLCHECKER_DICTIONARIES): $(GRUNT_FILES)
+ 	mkdir -p $(SPELLCHECKER_DICTIONARIES) && \
+-		cp -r -t $(SPELLCHECKER_DICTIONARIES) $(SPELLCHECKER_DICTIONARY_FILES)
++		cp -r $(SPELLCHECKER_DICTIONARIES) $(SPELLCHECKER_DICTIONARY_FILES)
+ 
+ $(SCHEMA):
+ 	mkdir -p $(SCHEMA) && \
+-		cp -r -t $(SCHEMA) $(SCHEMA_FILES)
++		cp -r $(SCHEMA) $(SCHEMA_FILES)
+ 
+ $(TOOLS):
+ 	mkdir -p $(TOOLS) && \
+-		cp -r -t $(TOOLS) $(TOOLS_FILES)
++		cp -r $(TOOLS) $(TOOLS_FILES)
+ 
+ $(LICENSE):
+ 	mkdir -p $(OUTPUT) && \
+-		cp -r -t $(OUTPUT) $(LICENSE_FILES)
++		cp -r $(OUTPUT) $(LICENSE_FILES)
+ 
+ $(GRUNT_FILES):
+ 	cd $(@D) && \
+ 		npm install && \
+ 		$(GRUNT_ENV) $(GRUNT) $(GRUNT_FLAGS)
+ 		mkdir -p $(OUTPUT)
+-		cp -r -t $(OUTPUT) ./build/server/*
++		cp -r $(OUTPUT) ./build/server/*
+ 	echo "Done" > $@
+ 
+ $(WELCOME):
+ 	mkdir -p $(WELCOME) && \
+-		cp -r -t $(WELCOME) $(WELCOME_FILES)
++		cp -r $(WELCOME) $(WELCOME_FILES)
+ 
+ $(INFO):
+ 	mkdir -p $(INFO) && \
+-		cp -r -t $(INFO) $(INFO_FILES)
++		cp -r $(INFO) $(INFO_FILES)
+ 
+ $(CORE_FONTS):
+ 	mkdir -p $(CORE_FONTS) && \
+-		cp -r -t $(CORE_FONTS) $(CORE_FONTS_FILES)
++		cp -r $(CORE_FONTS) $(CORE_FONTS_FILES)
+ 
+ clean:
+ 	rm -rf $(GRUNT_FILES)
+@@ -139,7 +139,7 @@ install:
+ 	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
+ 	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
+ 
+-	cp -fr -t ${DESTDIR}${DOCUMENT_ROOT} build/* ../web-apps/deploy/*
++	cp -fr ${DESTDIR}${DOCUMENT_ROOT} build/* ../web-apps/deploy/*
+ 	mkdir -p ${DESTDIR}/etc/onlyoffice/documentserver
+ 	mv ${DESTDIR}${DOCUMENT_ROOT}/server/Common/config/* ${DESTDIR}/etc/onlyoffice/documentserver
+ 

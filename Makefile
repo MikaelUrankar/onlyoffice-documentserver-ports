@@ -20,16 +20,16 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 # XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
 # qmake, boost-libs, icu ...
-# sdkjs: openjdk8, optipng, gifsicle
-#    mkdir /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/optipng-bin/vendor/
-#    cp /usr/local/bin/optipng /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/optipng-bin/vendor/
-#    mkdir /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/gifsicle/vendor/
-#    cp /usr/local/bin/gifsicle /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/gifsicle/vendor/
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
-		llvm10>0:devel/llvm10
+		llvm10>0:devel/llvm10 \
+		optipng>0:graphics/optipng \
+		gifsicle>0:graphics/gifsicle
 
 USES=		gmake qt:5
 USE_QT=		qmake_build
+USE_JAVA=	yes
+# XXX java11
+JAVA_VERSION=	8+
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
@@ -47,6 +47,14 @@ USE_LDCONFIG=	yes
 
 do-build:
 	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+
+# XXX try to build this with npm?
+	${MKDIR} ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor \
+		${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
+	${CP} ${LOCALBASE}/bin/optipng ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor
+	${CP} ${LOCALBASE}/bin/gifsicle ${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
+	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+
 # XXX build / patch core-fonts, dict, sdkjs*, server, web-apps
 # https://github.com/ONLYOFFICE/DocumentServer/issues/79#issuecomment-582545158
 # https://github.com/ONLYOFFICE/DocumentServer/issues/79#issuecomment-583453517
