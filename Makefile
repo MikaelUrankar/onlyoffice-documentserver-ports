@@ -20,6 +20,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 # XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
 # boost-libs, icu ...
+# npm install -g grunt-cli
+# gsed
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10 \
 		optipng>0:graphics/optipng \
@@ -48,7 +50,7 @@ GH_TUPLE=	\
 USE_LDCONFIG=	yes
 
 do-build:
-	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+#	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 # XXX try to build this with npm?
 	${MKDIR} ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor \
@@ -57,6 +59,6 @@ do-build:
 	${CP} ${LOCALBASE}/bin/gifsicle ${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
 	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
-	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+#	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 .include <bsd.port.mk>
