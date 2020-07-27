@@ -20,6 +20,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 # XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
 # qmake, boost-libs, icu ...
+# sdkjs: openjdk8, optipng, gifsicle
+#    mkdir /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/optipng-bin/vendor/
+#    cp /usr/local/bin/optipng /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/optipng-bin/vendor/
+#    mkdir /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/gifsicle/vendor/
+#    cp /usr/local/bin/gifsicle /root/onlyoffice-documentserver-ports/work/DocumentServer-b38a756/web-apps/build/node_modules/gifsicle/vendor/
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10
 

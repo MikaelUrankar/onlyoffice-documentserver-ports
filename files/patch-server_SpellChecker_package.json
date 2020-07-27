@@ -1,0 +1,11 @@
+--- server/SpellChecker/package.json	2020-05-22 08:21:44.000000000 +0000
++++ server/SpellChecker/package.json	2020-07-27 17:03:01.559447000 +0000
+@@ -8,7 +8,7 @@
+     "co": "^4.6.0",
+     "config": "^2.0.1",
+     "express": "^4.16.4",
+-    "nodehun": "git+https://git@github.com/ONLYOFFICE/nodehun.git#631d3f3c48500bf2f2ec44f8a676423d5c92e3d3",
++    "nodehun": "git+https://git@github.com/MikaelUrankar/nodehun.git#52335c8e8c9f22138f59c728b11bde0b150b5fb0",
+     "sockjs": "^0.3.19"
+   },
+   "pkg": {
