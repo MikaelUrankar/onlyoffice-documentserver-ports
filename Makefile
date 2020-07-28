@@ -9,7 +9,7 @@
 
 PORTNAME=	documentserver
 DISTVERSION=	5.5.3
-CATEGORIES=	lang
+CATEGORIES=	www
 
 MAINTAINER=	mikael@FreeBSD.org
 COMMENT=	online office suite
@@ -19,17 +19,19 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
-# gsed?, icu ...
+# boost-libs, icu ...
 # npm install -g grunt-cli
-# env var:
-# QT_QPA_PLATFORM=minimal (+phantomjs: https://github.com/MikaelUrankar/phantomjs-ports)
-# PRODUCT_VERSION="5.4.2" BUILD_NUMBER="1"
+# gsed
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10 \
 		optipng>0:graphics/optipng \
 		gifsicle>0:graphics/gifsicle \
 		npm>0:www/npm \
-		node>0:www/node
+		node>0:www/node \
+		phantomjs>0:lang/phantomjs
+
+LIB_DEPENDS=	libv8.so:lang/v8-6.8 \
+		libcurl.so:ftp/curl
 
 USES=		gmake qt:5
 USE_QT=		qmake_build
