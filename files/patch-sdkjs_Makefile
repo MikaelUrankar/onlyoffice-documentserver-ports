@@ -1,0 +1,11 @@
+--- sdkjs/Makefile.orig	2020-07-28 07:42:54.726115000 +0000
++++ sdkjs/Makefile	2020-07-28 07:43:37.001962000 +0000
+@@ -41,7 +41,7 @@ all: $(WEBAPPS)
+ 
+ $(WEBAPPS): $(WEBAPPS_FILES)
+ 	mkdir -p $(OUTPUT)/$(WEBAPPS_DIR) && \
+-		cp -r -t $(OUTPUT)/$(WEBAPPS_DIR) ../$(WEBAPPS_DIR)/deploy/** 
++		cp -r ../$(WEBAPPS_DIR)/deploy/** $(OUTPUT)/$(WEBAPPS_DIR)
+ 
+ $(WEBAPPS_FILES): $(NODE_MODULES) $(SDKJS_FILES)
+ 	cd ../$(WEBAPPS_DIR)/build  && \

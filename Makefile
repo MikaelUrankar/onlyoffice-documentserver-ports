@@ -19,15 +19,17 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
-# boost-libs, icu ...
+# gsed?, icu ...
 # npm install -g grunt-cli
-# gsed
+# env var:
+# QT_QPA_PLATFORM=minimal (+phantomjs: https://github.com/MikaelUrankar/phantomjs-ports)
+# PRODUCT_VERSION="5.4.2" BUILD_NUMBER="1"
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10 \
 		optipng>0:graphics/optipng \
 		gifsicle>0:graphics/gifsicle \
-		${PYTHON_PKGNAMEPREFIX}>0:www/npm \
-		${PYTHON_PKGNAMEPREFIX}>0:www/node
+		npm>0:www/npm \
+		node>0:www/node
 
 USES=		gmake qt:5
 USE_QT=		qmake_build
@@ -49,10 +51,13 @@ GH_TUPLE=	\
 
 USE_LDCONFIG=	yes
 
+MAKE_ENV=	PRODUCT_VERSION="${DISTVERSION}" \
+		BUILD_NUMBER="1" \
+		QT_QPA_PLATFORM=minimal
+
 do-build:
 #	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
-# XXX try to build this with npm?
 	${MKDIR} ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor \
 		${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
 	${CP} ${LOCALBASE}/bin/optipng ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor
