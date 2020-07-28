@@ -1,5 +1,5 @@
---- server/SpellChecker/npm-shrinkwrap.json	2020-05-22 08:21:44.000000000 +0000
-+++ server/SpellChecker/npm-shrinkwrap.json	2020-07-27 17:02:54.547842000 +0000
+--- server/SpellChecker/npm-shrinkwrap.json.orig	2020-05-22 08:21:44 UTC
++++ server/SpellChecker/npm-shrinkwrap.json
 @@ -271,8 +271,8 @@
        "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk="
      },

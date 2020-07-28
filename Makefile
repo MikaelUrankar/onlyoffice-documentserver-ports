@@ -56,7 +56,7 @@ MAKE_ENV=	PRODUCT_VERSION="${DISTVERSION}" \
 		QT_QPA_PLATFORM=minimal
 
 do-build:
-#	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 	${MKDIR} ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor \
 		${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor

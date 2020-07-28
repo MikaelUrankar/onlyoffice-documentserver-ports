@@ -1,0 +1,41 @@
+--- core/Makefile.orig	2020-05-22 10:21:42.000000000 +0200
++++ core/Makefile	2020-07-28 13:40:35.215717000 +0200
+@@ -10,6 +10,10 @@ ifeq ($(UNAME_M),x86_64)
+ 	ARCHITECTURE := 64
+ 	ARCH_SUFFIX := x64
+ endif
++ifeq ($(UNAME_M),amd64)
++       ARCHITECTURE := 64
++       ARCH_SUFFIX := x64
++endif
+ ifneq ($(filter %86,$(UNAME_M)),)
+ 	ARCHITECTURE := 32
+ 	ARCH_SUFFIX := x86
+@@ -40,6 +44,18 @@ else
+ 		PACKAGE_VERSION := $(PRODUCT_VERSION)-$(BUILD_NUMBER)
+ 		ARCH_REPO_DIR := linux
+ 	endif
++        ifeq ($(UNAME_S),FreeBSD)
++                PLATFORM := freebsd
++                SHARED_EXT := .so*
++                SHELL_EXT := .sh
++                LIB_EXT := .a
++                LIB_PREFIX := lib
++                ARCH_EXT := .tar.gz
++                MAKE := gmake
++                AR := tar -zcvf
++                PACKAGE_VERSION := $(PRODUCT_VERSION)-$(BUILD_NUMBER)
++                ARCH_REPO_DIR := freebsd
++        endif
+ 	ifeq ($(UNAME_S),Darwin)
+ 		PLATFORM := mac
+ 		SHARED_EXT := .dylib
+@@ -54,7 +70,7 @@ else
+ 	endif
+ endif
+ 
+-TARGET := $(PLATFORM)_$(ARCHITECTURE)
++#TARGET := $(PLATFORM)_$(ARCHITECTURE)
+ 
+ LIBDIR := build/lib/$(TARGET)
+ BINDIR := build/bin/$(TARGET)

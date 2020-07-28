@@ -1,5 +1,5 @@
---- server/Makefile.orig	2020-05-22 10:21:44.000000000 +0200
-+++ server/Makefile	2020-07-27 20:58:00.615391000 +0200
+--- server/Makefile.orig	2020-05-22 08:21:44 UTC
++++ server/Makefile
 @@ -86,47 +86,47 @@ DEBUG = $(BRANDING_DIR)/debug.js
  all: $(SPELLCHECKER_DICTIONARIES) $(TOOLS) $(SCHEMA) $(CORE_FONTS) $(LICENSE) $(WELCOME) $(INFO) build-date
  

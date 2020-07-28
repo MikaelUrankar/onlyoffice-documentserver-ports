@@ -1,5 +1,5 @@
---- server/SpellChecker/package.json	2020-05-22 08:21:44.000000000 +0000
-+++ server/SpellChecker/package.json	2020-07-27 17:03:01.559447000 +0000
+--- server/SpellChecker/package.json.orig	2020-05-22 08:21:44 UTC
++++ server/SpellChecker/package.json
 @@ -8,7 +8,7 @@
      "co": "^4.6.0",
      "config": "^2.0.1",

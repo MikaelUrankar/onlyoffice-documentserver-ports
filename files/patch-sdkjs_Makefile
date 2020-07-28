@@ -1,5 +1,5 @@
---- sdkjs/Makefile.orig	2020-07-28 07:42:54.726115000 +0000
-+++ sdkjs/Makefile	2020-07-28 07:43:37.001962000 +0000
+--- sdkjs/Makefile.orig	2020-05-22 08:21:43 UTC
++++ sdkjs/Makefile
 @@ -41,7 +41,7 @@ all: $(WEBAPPS)
  
  $(WEBAPPS): $(WEBAPPS_FILES)
