@@ -1,5 +1,11 @@
---- sdkjs/Makefile.orig	2020-05-22 08:21:43 UTC
-+++ sdkjs/Makefile
+--- sdkjs/Makefile.orig	2020-05-22 10:21:43.000000000 +0200
++++ sdkjs/Makefile	2020-07-29 13:44:21.517397000 +0200
+@@ -1,4 +1,4 @@
+-GRUNT = grunt
++GRUNT = ../../sdkjs/build/node_modules/grunt/node_modules/.bin/grunt
+ GRUNT_FLAGS = --no-color -v 
+ 
+ OUTPUT_DIR = deploy
 @@ -41,7 +41,7 @@ all: $(WEBAPPS)
  
  $(WEBAPPS): $(WEBAPPS_FILES)
