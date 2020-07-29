@@ -1,4 +1,4 @@
-TIMESTAMP = 1596023636
+TIMESTAMP = 1596032139
 SHA256 (sdkjs-build-node_modules.tar.xz) = 9b810e6e3387a231b283ecf3de13c149d1b5c77df2b2d959950ee2226423f8ec
 SIZE (sdkjs-build-node_modules.tar.xz) = 11522300
 SHA256 (server-node_modules.tar.xz) = 33c803979ab94951cfc866d208065079e904a961cc55b8bad243ab3b17d5251c
@@ -11,8 +11,8 @@ SHA256 (server-FileConverter-node_modules.tar.xz) = e5a309f2ca380f5582e01f3fffe0
 SIZE (server-FileConverter-node_modules.tar.xz) = 86328
 SHA256 (server-Metrics-node_modules.tar.xz) = ee3e2b0745aed600a2c5f1eb7bb473e73f4f2145a84bb367bc48f638798bb2ed
 SIZE (server-Metrics-node_modules.tar.xz) = 644960
-SHA256 (server-SpellChecker-node_modules.tar.xz) = 6aa98a2ac8b23f10b5ab718511b599a93c99b98c5b39549e07b1957dee559706
-SIZE (server-SpellChecker-node_modules.tar.xz) = 1954716
+SHA256 (server-SpellChecker-node_modules.tar.xz) = e1569f6884bd9efe8cebbab44d431d959b18dd5e84b68e75bdc467ea02c6a9ba
+SIZE (server-SpellChecker-node_modules.tar.xz) = 1921588
 SHA256 (web-apps-build-node_modules.tar.xz) = f22d253422fc48dbeb4b34b6cfb87b561de5f16a4611b65756a555094a7fa69c
 SIZE (web-apps-build-node_modules.tar.xz) = 6613036
 SHA256 (ONLYOFFICE-DocumentServer-5.5.3-b38a756_GH0.tar.gz) = 5797b732658d8a0d967c566fb740effefa3315a4371592cea271cfafca9060dc
