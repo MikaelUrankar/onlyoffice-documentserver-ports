@@ -1,3 +1,5 @@
+XXX ccache
+
 --- core/Common/base.pri.orig	2020-05-22 08:21:42 UTC
 +++ core/Common/base.pri
 @@ -76,6 +76,14 @@ android {

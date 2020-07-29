@@ -11,6 +11,24 @@ PORTNAME=	documentserver
 DISTVERSION=	5.5.3
 CATEGORIES=	www
 
+MASTER_SITES=	http://mikael.urankar.free.fr/onlyoffice_node/:sdkjs \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server_common \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server_DocService \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server_FileConverter \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server_Metrics \
+		http://mikael.urankar.free.fr/onlyoffice_node/:server_SpellChecker \
+		http://mikael.urankar.free.fr/onlyoffice_node/:webapps
+
+DISTFILES=	sdkjs-build-node_modules.tar.xz:sdkjs \
+		server-node_modules.tar.xz:server \
+		server-Common-node_modules.tar.xz:server_common \
+		server-DocService-node_modules.tar.xz:server_DocService \
+		server-FileConverter-node_modules.tar.xz:server_FileConverter \
+		server-Metrics-node_modules.tar.xz:server_Metrics \
+		server-SpellChecker-node_modules.tar.xz:server_SpellChecker \
+		web-apps-build-node_modules.tar.xz:webapps
+
 MAINTAINER=	mikael@FreeBSD.org
 COMMENT=	online office suite
 
@@ -56,6 +74,14 @@ USE_LDCONFIG=	yes
 MAKE_ENV=	PRODUCT_VERSION="${DISTVERSION}" \
 		BUILD_NUMBER="1" \
 		QT_QPA_PLATFORM=minimal
+
+post-extract:
+.for file in sdkjs-build server server-Common server-DocService \
+	server-FileConverter server-Metrics \
+	server-SpellChecker web-apps-build
+	${TAR} -xf ${DISTDIR}/${file}-node_modules.tar.xz -C ${WRKSRC}
+.endfor
+
 
 do-build:
 	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
