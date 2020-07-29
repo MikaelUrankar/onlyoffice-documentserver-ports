@@ -78,6 +78,10 @@ post-extract:
 	${TAR} -xf ${DISTDIR}/${file}-node_modules.tar.xz -C ${WRKSRC}
 .endfor
 
+post-patch:
+	${REINPLACE_CMD} "s|%%LOCALBASE%%|${LOCALBASE}|" \
+		${WRKSRC}/Common/3dParty/icu/icu.pri
+
 
 do-build:
 	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
@@ -89,5 +93,8 @@ do-build:
 	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+
+do-install:
+	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} DESTDIR=${LOCALBASE} ${MAKE_CMD} install
 
 .include <bsd.port.mk>

@@ -5,7 +5,7 @@
  #endif
  
 +#ifdef __FreeBSD__
-+#define _gcvt(x,n,b) sprintf(b, "%.17g", x)
++#define _gcvt(x,n,b) sprintf(b, "%.*g", n, x);
 +#endif
 +
  #define DBL_MAX 15

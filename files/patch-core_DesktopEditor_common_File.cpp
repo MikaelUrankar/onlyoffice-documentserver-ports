@@ -1,4 +1,4 @@
---- core/DesktopEditor/common/File.cpp.orig	2020-05-22 08:21:42 UTC
+--- core/DesktopEditor/common/File.cpp.orig	2020-05-22 10:21:42 UTC
 +++ core/DesktopEditor/common/File.cpp
 @@ -39,10 +39,14 @@
      #include <windows.h>
@@ -25,25 +25,20 @@
          char buf[NS_FILE_MAX_PATH];
          memset(buf, 0, NS_FILE_MAX_PATH);
          if (readlink ("/proc/self/exe", buf, NS_FILE_MAX_PATH) <= 0)
-@@ -1472,6 +1476,21 @@ namespace NSFile
+@@ -1472,6 +1476,16 @@ namespace NSFile
              std::string sUTF8(buf);
              std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
              return sRet;
-+#endif
-+#if defined(__FreeBSD__)
++#elif defined(__FreeBSD__)
 +        int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, -1};
-+        char buf[NS_FILE_MAX_PATH];
-+        size_t size = NS_FILE_MAX_PATH;
++	size_t len = sizeof(buf);
 +
-+        memset(buf, 0, NS_FILE_MAX_PATH);
-+        if (sysctl(mib, 4, &buf, &size, NULL, 0) != 0) {
-+            size = readlink("/proc/curproc/file", buf, size - 1);
-+            if (size < 0)
-+            return L"";
++        if (sysctl(mib, 4, buf, &len, NULL, 0) == 0)
++        {
++            std::string sUTF8(buf);
++            std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
++            return sRet;
 +        }
-+        std::string sUTF8(buf);
-+        std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
-+        return sRet;
  #endif
              return L"";
          }
