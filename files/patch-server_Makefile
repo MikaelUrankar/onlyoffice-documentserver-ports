@@ -1,3 +1,7 @@
+XXX gsed
+COMMON_DEFINES_JS (missing in $(OUTPUT)
+
+
 --- server/Makefile.orig	2020-05-22 10:21:44.000000000 +0200
 +++ server/Makefile	2020-07-29 13:37:33.396721000 +0200
 @@ -1,4 +1,4 @@

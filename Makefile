@@ -1,11 +1,10 @@
 # $FreeBSD$
 
-# openssl.pri useless
-# DesktopEditor/raster/JBig2/source/LeptonLib/readfile.cpp
-# DesktopEditor/xmlsec/test/OpenSSL_gui_test/OpenSSL_gui_test.pro
-# Common/3dParty/openssl/openssl.pri
-# Common/3dParty/v8/v8.pri 
-# Common/3dParty/v8/v8_xp/v8.pri
+# XXX
+# patch-core_Common_3dParty_icu_icu.pri:XXX /usr/local
+# patch-core_Common_base.pri:XXX ccache
+# patch-core_Makefile:XXX TARGET
+# patch-server_Makefile:XXX gsed
 
 PORTNAME=	documentserver
 DISTVERSION=	5.5.3
@@ -35,11 +34,9 @@ COMMENT=	online office suite
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-# XXX llvm10
 # v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
-# boost-libs, icu ...
-# npm install -g grunt-cli
-# gsed
+# phantomjs needed? https://github.com/MikaelUrankar/phantomjs-ports
+# gsed needed?
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10 \
 		optipng>0:graphics/optipng \
@@ -54,7 +51,6 @@ LIB_DEPENDS=	libv8.so:lang/v8-6.8 \
 USES=		gmake qt:5
 USE_QT=		qmake_build
 USE_JAVA=	yes
-# XXX java11
 JAVA_VERSION=	8+
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
@@ -92,6 +88,6 @@ do-build:
 	${CP} ${LOCALBASE}/bin/gifsicle ${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
 	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
-#	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 .include <bsd.port.mk>
