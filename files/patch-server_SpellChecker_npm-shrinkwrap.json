@@ -6,8 +6,8 @@
      "nodehun": {
 -      "version": "git+https://git@github.com/ONLYOFFICE/nodehun.git#631d3f3c48500bf2f2ec44f8a676423d5c92e3d3",
 -      "from": "git+https://git@github.com/ONLYOFFICE/nodehun.git#631d3f3c48500bf2f2ec44f8a676423d5c92e3d3"
-+      "version": "git+https://git@github.com/MikaelUrankar/nodehun.git#52335c8e8c9f22138f59c728b11bde0b150b5fb0",
-+      "from": "git+https://git@github.com/MikaelUrankar/nodehun.git#52335c8e8c9f22138f59c728b11bde0b150b5fb0"
++      "version": "git+https://git@github.com/MikaelUrankar/nodehun.git#28ec9f72ce22917c2e041ecfaedd8b59290ee4ad",
++      "from": "git+https://git@github.com/MikaelUrankar/nodehun.git#28ec9f72ce22917c2e041ecfaedd8b59290ee4ad"
      },
      "on-finished": {
        "version": "2.3.0",

@@ -1,13 +1,29 @@
 # $FreeBSD$
 
 # XXX
-# patch-core_Common_3dParty_icu_icu.pri:XXX /usr/local
 # patch-core_Common_base.pri:XXX ccache
 # patch-core_Makefile:XXX TARGET
-# patch-server_Makefile:XXX gsed
+
+# tar the node_modules
+#
+# cd sdkjs/build ; npm install
+# web-apps/build/node_modules/pngjs-nozlib/package.json remove phantomjs
+# cd web-apps/build ; env QT_QPA_PLATFORM=minimal npm install
+# cd server ; npm install
+# make -C onlyoffice-documentserver-ports
+#
+# cd work
+# tar cJf sdkjs-build-node_modules.tar.xz          sdkjs/build/node_modules
+# tar cJf server-node_modules.tar.xz               server/node_modules
+# tar cJf server-Common-node_modules.tar.xz        server/build/server/Common/node_modules
+# tar cJf server-DocService-node_modules.tar.xz    server/build/server/DocService/node_modules
+# tar cJf server-FileConverter-node_modules.tar.xz server/build/server/FileConverter/node_modules
+# tar cJf server-Metrics-node_modules.tar.xz       server/build/server/Metrics/node_modules
+# tar cJf server-SpellChecker-node_modules.tar.xz  server/build/server/SpellChecker/node_modules
+# tar cJf web-apps-build-node_modules.tar.xz       web-apps/build/node_modules
 
 PORTNAME=	documentserver
-DISTVERSION=	5.5.3
+DISTVERSION=	5.6.3
 CATEGORIES=	www
 
 MASTER_SITES=	http://mikael.urankar.free.fr/onlyoffice_node/:sdkjs \
@@ -34,9 +50,7 @@ COMMENT=	online office suite
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-# v8=6.8:lang/v8 , available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
-# phantomjs needed? https://github.com/MikaelUrankar/phantomjs-ports
-# gsed needed?
+# v8=6.8:lang/v8, available here https://github.com/MikaelUrankar/v8-ports/tree/6.8
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs \
 		llvm10>0:devel/llvm10 \
 		optipng>0:graphics/optipng \
@@ -55,15 +69,15 @@ JAVA_VERSION=	8+
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TAGNAME=	b38a756 # distname is too complicated
+GH_TAGNAME=	0187bea # distname is too complicated
 GH_TUPLE=	\
-		ONLYOFFICE:core:c1e4a2c:onlyoffice_core/core \
+		ONLYOFFICE:core:ef6af5a:onlyoffice_core/core \
 		ONLYOFFICE:core-fonts:959c01c:onlyoffice_corefonts/core-fonts \
 		ONLYOFFICE:dictionaries:2bff8e8:onlyoffice_dictionaries/dictionaries \
-		ONLYOFFICE:sdkjs:6622ecd:onlyoffice_sdkjs/sdkjs \
-		ONLYOFFICE:sdkjs-plugins:cee7e3f:onlyoffice_sdkjsplugins/sdkjs-plugins \
-		ONLYOFFICE:server:e6731c5:onlyoffice_server/server \
-		ONLYOFFICE:web-apps:9f06b21:onlyoffice_webapps/web-apps
+		ONLYOFFICE:sdkjs:a0ad964:onlyoffice_sdkjs/sdkjs \
+		ONLYOFFICE:sdkjs-plugins:6de0f7e:onlyoffice_sdkjsplugins/sdkjs-plugins \
+		ONLYOFFICE:server:015fb87:onlyoffice_server/server \
+		ONLYOFFICE:web-apps:a4dcc7f:onlyoffice_webapps/web-apps
 
 USE_LDCONFIG=	yes
 
@@ -80,8 +94,7 @@ post-extract:
 
 post-patch:
 	${REINPLACE_CMD} "s|%%LOCALBASE%%|${LOCALBASE}|" \
-		${WRKSRC}/Common/3dParty/icu/icu.pri
-
+		${WRKSRC}/core/Common/3dParty/icu/icu.pri
 
 do-build:
 	cd ${WRKSRC}/core ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
@@ -90,11 +103,11 @@ do-build:
 		${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
 	${CP} ${LOCALBASE}/bin/optipng ${WRKSRC}/web-apps/build/node_modules/optipng-bin/vendor
 	${CP} ${LOCALBASE}/bin/gifsicle ${WRKSRC}/web-apps/build/node_modules/gifsicle/vendor
-	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
+#	cd ${WRKSRC}/sdkjs ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} ${MAKE_CMD}
 
 do-install:
-	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} DESTDIR=${LOCALBASE} ${MAKE_CMD} install
+	cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} DESTDIR=${LOCALBASE} ${MAKE_CMD} DESTDIR=${STAGEDIR}${LOCALBASE} install
 
 .include <bsd.port.mk>
