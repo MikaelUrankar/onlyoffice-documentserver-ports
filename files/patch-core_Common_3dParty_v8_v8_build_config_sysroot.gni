@@ -1,0 +1,13 @@
+--- core/Common/3dParty/v8/v8/build/config/sysroot.gni.orig	2021-12-08 18:23:10 UTC
++++ core/Common/3dParty/v8/v8/build/config/sysroot.gni
+@@ -15,8 +15,8 @@ declare_args() {
+   # The absolute path to directory containing linux sysroot images
+   target_sysroot_dir = "//build/linux"
+ 
+-  use_sysroot = current_cpu != "s390x" && current_cpu != "s390" &&
+-                current_cpu != "ppc64" && current_cpu != "ppc"
++  use_sysroot = !is_bsd && (current_cpu != "s390x" && current_cpu != "s390" &&
++                current_cpu != "ppc64" && current_cpu != "ppc")
+ }
+ 
+ if (current_os == target_os && current_cpu == target_cpu &&

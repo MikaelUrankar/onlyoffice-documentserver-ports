@@ -1,13 +1,14 @@
---- core/DesktopEditor/common/File.cpp.orig	2020-05-22 10:21:42 UTC
+--- core/DesktopEditor/common/File.cpp.orig	2021-09-30 12:13:32 UTC
 +++ core/DesktopEditor/common/File.cpp
-@@ -39,10 +39,14 @@
+@@ -39,11 +39,15 @@
      #include <windows.h>
  #endif
  
--#if defined(__linux__) || defined(_MAC) && !defined(_IOS)
-+#if defined(__FreeBSD__) || defined(__linux__) || defined(_MAC) && !defined(_IOS)
+-#ifdef _LINUX
++#if defined(_LINUX) || defined(__FreeBSD__)
  #include <unistd.h>
  #include <string.h>
+ #include <sys/stat.h>
 +#if defined(__FreeBSD__)
 +#include <sys/types.h>
 +#include <sys/sysctl.h>
@@ -15,30 +16,27 @@
 +#endif
  
  #ifdef _IOS
-     #include <unistd.h>
-@@ -1461,7 +1465,7 @@ namespace NSFile
-         return std::wstring(buf);
- #endif
- 
--#if defined(__linux__) || defined(_MAC) && !defined(_IOS)
-+#if defined(__FreeBSD__) || defined(__linux__) || defined(_MAC) && !defined(_IOS)
-         char buf[NS_FILE_MAX_PATH];
-         memset(buf, 0, NS_FILE_MAX_PATH);
-         if (readlink ("/proc/self/exe", buf, NS_FILE_MAX_PATH) <= 0)
-@@ -1472,6 +1476,16 @@ namespace NSFile
-             std::string sUTF8(buf);
-             std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
-             return sRet;
-+#elif defined(__FreeBSD__)
-+        int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, -1};
-+	size_t len = sizeof(buf);
-+
-+        if (sysctl(mib, 4, buf, &len, NULL, 0) == 0)
-+        {
-+            std::string sUTF8(buf);
-+            std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
-+            return sRet;
-+        }
- #endif
+     const char* fileSystemRepresentation(const std::wstring& sFileName);
+@@ -1613,6 +1617,22 @@ namespace NSFile
              return L"";
          }
+ 
++        std::string sUTF8(buf);
++        std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
++        return sRet;
++#endif
++
++#if defined(__FreeBSD__)
++        int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, -1};
++        char buf[NS_FILE_MAX_PATH];
++        size_t size = NS_FILE_MAX_PATH;
++
++        memset(buf, 0, NS_FILE_MAX_PATH);
++        if (sysctl(mib, 4, &buf, &size, NULL, 0) != 0) {
++            size = readlink("/proc/curproc/file", buf, size - 1);
++            if (size < 0)
++            return L"";
++        }
+         std::string sUTF8(buf);
+         std::wstring sRet = CUtf8Converter::GetUnicodeStringFromUTF8((BYTE*)sUTF8.c_str(), sUTF8.length());
+         return sRet;

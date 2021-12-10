@@ -1,14 +1,23 @@
---- core/Common/3dParty/v8/v8.pri.orig	2020-05-22 08:21:42 UTC
+--- core/Common/3dParty/v8/v8.pri.orig	2021-09-30 12:13:32 UTC
 +++ core/Common/3dParty/v8/v8.pri
-@@ -5,6 +5,11 @@ INCLUDEPATH += \
-     $$CORE_V8_PATH_INCLUDE \
-     $$CORE_V8_PATH_INCLUDE/include
+@@ -31,6 +31,20 @@ core_windows {
+     LIBS += -lShlwapi
+ }
  
 +core_freebsd {
-+    LIBS += -lv8_libplatform -lv8_libbase
-+    LIBS += -licui18n -licuuc
++    use_v8_monolith {
++        LIBS += -L$$CORE_V8_PATH_LIBS -lv8_monolith
++    } else {
++        SNAPSHOT_LIB=v8_snapshot
++        !exists($$CORE_V8_PATH_LIBS/libv8_snapshot.a) {
++            SNAPSHOT_LIB=v8_nosnapshot
++        }
++
++        LIBS += -L$$CORE_V8_PATH_LIBS -lv8_base -lv8_libplatform -lv8_libbase -l$$SNAPSHOT_LIB -lv8_libsampler
++        LIBS += -L$$CORE_V8_PATH_LIBS/third_party/icu -licui18n -licuuc
++    }
 +}
 +
- core_windows {
-     CORE_V8_PATH_LIBS = $$CORE_V8_PATH_INCLUDE/out.gn/$$CORE_BUILDS_PLATFORM_PREFIX/$$CORE_BUILDS_CONFIGURATION_PREFIX/obj
- 
+ core_linux {
+     use_v8_monolith {
+         LIBS += -L$$CORE_V8_PATH_LIBS -lv8_monolith

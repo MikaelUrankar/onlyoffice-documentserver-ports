@@ -1,15 +1,11 @@
---- core/DesktopEditor/AllFontsGen/AllFontsGen.pro.orig	2020-05-22 08:21:42 UTC
+--- core/DesktopEditor/AllFontsGen/AllFontsGen.pro.orig	2021-09-30 12:13:32 UTC
 +++ core/DesktopEditor/AllFontsGen/AllFontsGen.pro
-@@ -17,6 +17,12 @@ DEFINES += KERNEL_USE_DYNAMIC_LIBRARY
- DEFINES += GRAPHICS_USE_DYNAMIC_LIBRARY
- ADD_DEPENDENCY(graphics, kernel, UnicodeConverter)
+@@ -39,4 +39,8 @@ core_linux {
+     QMAKE_LFLAGS += -Wl,--rpath=./
+ }
  
 +core_freebsd {
-+    LIBS += -lz -pthread
-+
-+    QMAKE_LFLAGS += -Wl,--rpath=./
++    LIBS += -liconv
 +}
 +
- core_windows {
-     DEFINES += \
-     JAS_WIN_MSVC_BUILD \
+ SOURCES += main.cpp

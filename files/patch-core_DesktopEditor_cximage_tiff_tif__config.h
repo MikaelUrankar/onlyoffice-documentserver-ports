@@ -1,11 +1,11 @@
---- core/DesktopEditor/cximage/tiff/tif_config.h.orig	2020-05-22 08:21:42 UTC
+--- core/DesktopEditor/cximage/tiff/tif_config.h.orig	2021-09-30 12:13:32 UTC
 +++ core/DesktopEditor/cximage/tiff/tif_config.h
 @@ -19,7 +19,7 @@
  #define HAVE_SYS_TYPES_H 1
  
  /* Define to 1 if you have the <io.h> header file. */
 -#ifndef _LINUX
-+#if !defined(__FreeBSD__) && !defined(_LINUX)
++#if !defined(_LINUX) && !defined(__FreeBSD__)
  #define HAVE_IO_H 1
  #endif
  
@@ -14,7 +14,7 @@
  #define SIZEOF_LONG 4
  
 -#ifndef _LINUX
-+#if !defined(__FreeBSD__) && !defined(_LINUX)
++#if !defined(_LINUX) && !defined(__FreeBSD__)
  /* Signed 64-bit type */
  #define TIFF_INT64_T signed __int64
  
@@ -23,7 +23,7 @@
  #endif
  
 -#ifdef _LINUX
-+#if  defined(__FreeBSD__) || defined(_LINUX)
++#if defined(_LINUX) || defined(__FreeBSD__)
  #include <inttypes.h>
  
  /* Signed 64-bit type */
@@ -32,7 +32,7 @@
  //#endif
  
 -#ifndef _LINUX
-+#if !defined(__FreeBSD__) && !defined(_LINUX)
++#if !defined(_LINUX) && !defined(__FreeBSD__)
  #define lfind _lfind
  #endif
  /*

@@ -1,4 +1,4 @@
---- core/HtmlFile/HtmlFile.pro.orig	2020-05-22 08:21:42 UTC
+--- core/HtmlFile/HtmlFile.pro.orig	2021-09-30 12:13:32 UTC
 +++ core/HtmlFile/HtmlFile.pro
 @@ -18,6 +18,10 @@ include(../Common/base.pri)
  

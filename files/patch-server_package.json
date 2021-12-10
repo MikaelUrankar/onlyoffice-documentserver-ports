@@ -1,0 +1,20 @@
+--- server/package.json.orig	2021-09-28 08:06:55 UTC
++++ server/package.json
+@@ -34,6 +34,7 @@
+     "mkdir": {
+       "server": {
+         "options": {
++          "mode": "0755",
+           "create": [
+             "./build/server"
+           ]
+@@ -59,7 +60,8 @@
+     "grunt-check-dependencies": "^1.0.0",
+     "grunt-contrib-clean": "^2.0.0",
+     "grunt-contrib-copy": "^1.0.0",
++    "grunt-mkdir": "^1.0.0",
+     "grunt-stripcomments": "^0.7.2",
+-    "grunt-mkdir": "^1.0.0"
++    "pkg": "^5.5.1"
+   }
+ }

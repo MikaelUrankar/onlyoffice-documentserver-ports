@@ -1,0 +1,11 @@
+--- core/Common/3dParty/v8/v8/build/config/features.gni.orig	2021-12-08 18:23:10 UTC
++++ core/Common/3dParty/v8/v8/build/config/features.gni
+@@ -55,7 +55,7 @@ declare_args() {
+   fieldtrial_testing_like_official_build = is_chrome_branded
+ 
+   # libudev usage. This currently only affects the content layer.
+-  use_udev = is_linux && !is_chromecast
++  use_udev = is_linux && !is_bsd && !is_chromecast
+ 
+   use_dbus = is_linux && !is_chromecast
+ 

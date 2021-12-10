@@ -1,0 +1,45 @@
+--- core/Common/3dParty/v8/v8/build/toolchain/gcc_toolchain.gni.orig	2021-12-08 18:23:10 UTC
++++ core/Common/3dParty/v8/v8/build/toolchain/gcc_toolchain.gni
+@@ -25,6 +25,11 @@ analyzer_wrapper =
+     rebase_path("//build/toolchain/clang_static_analyzer_wrapper.py",
+                 root_build_dir) + " --mode=clang"
+ 
++declare_args() {
++  extra_cxxflags = ""
++  extra_ldflags = ""
++}
++
+ # This template defines a toolchain for something that works like gcc
+ # (including clang).
+ #
+@@ -568,13 +573,23 @@ template("clang_toolchain") {
+   }
+ 
+   gcc_toolchain(target_name) {
+-    prefix = rebase_path("$clang_base_path/bin", root_build_dir)
+-    cc = "$prefix/clang"
+-    cxx = "$prefix/clang++"
+-    ld = cxx
+-    readelf = "${toolprefix}readelf"
+-    ar = "${prefix}/llvm-ar"
+-    nm = "${toolprefix}nm"
++    if (is_bsd) {
++      prefix = "/usr/local/bin"
++      cc = "clang12"
++      cxx = "clang++12"
++      ld = cxx
++      readelf = "readelf"
++      ar = "${prefix}/llvm-ar12"
++      nm = "${toolprefix}nm"
++    } else {
++      prefix = rebase_path("$clang_base_path/bin", root_build_dir)
++      cc = "$prefix/clang"
++      cxx = "$prefix/clang++"
++      ld = cxx
++      readelf = "${toolprefix}readelf"
++      ar = "${prefix}/llvm-ar"
++      nm = "${toolprefix}nm"
++    }
+ 
+     forward_variables_from(invoker,
+                            [

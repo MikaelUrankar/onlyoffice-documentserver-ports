@@ -1,0 +1,56 @@
+--- core/Common/3dParty/v8/v8/build/config/compiler/BUILD.gn.orig	2021-12-08 18:23:10 UTC
++++ core/Common/3dParty/v8/v8/build/config/compiler/BUILD.gn
+@@ -103,7 +103,7 @@ declare_args() {
+   strip_absolute_paths_from_debug_symbols = false
+ }
+ 
+-if (is_clang && !is_nacl) {
++if (is_clang && !is_nacl && !is_bsd) {
+   update_args = [ "--print-revision" ]
+   if (llvm_force_head_revision) {
+     update_args += [ "--llvm-force-head-revision" ]
+@@ -256,7 +256,7 @@ config("compiler") {
+     ]
+   }
+ 
+-  if (is_clang && !is_nacl) {
++  if (is_clang && !is_nacl && !is_bsd) {
+     # This is here so that all files get recompiled after a clang roll and
+     # when turning clang on or off. (defines are passed via the command line,
+     # and build system rebuild things when their commandline changes). Nothing
+@@ -595,7 +595,7 @@ config("compiler_cpu_abi") {
+         cflags += [ "-mtune=$arm_tune" ]
+       }
+     } else if (current_cpu == "arm64") {
+-      if (is_clang && !is_android && !is_nacl) {
++      if (is_clang && !is_android && !is_nacl && !is_bsd) {
+         cflags += [ "--target=aarch64-linux-gnu" ]
+         ldflags += [ "--target=aarch64-linux-gnu" ]
+       }
+@@ -1095,7 +1095,7 @@ config("default_warnings") {
+ 
+     # use_xcode_clang only refers to the iOS toolchain, host binaries use
+     # chromium's clang always.
+-    if (!is_nacl && (!use_xcode_clang || current_toolchain == host_toolchain)) {
++    if (!is_bsd && (!use_xcode_clang || current_toolchain == host_toolchain)) {
+       # Flags NaCl (Clang 3.7) and Xcode 7.3 (Clang clang-703.0.31) do not
+       # recognize.
+       cflags += [
+@@ -1667,7 +1667,7 @@ config("symbols") {
+         "-g2",
+       ]
+     } else {
+-      cflags = [ "-g2" ]
++      cflags = [ "-g0" ]
+     }
+     if (use_debug_fission) {
+       cflags += [ "-gsplit-dwarf" ]
+@@ -1685,7 +1685,7 @@ config("symbols") {
+     # "third_party/binutils/Linux_x64/Release/bin/ld.gold: warning:
+     # /tmp/lto-llvm-0b5201.o: corrupt debug info in .debug_info"
+     if (!is_mac && !is_ios && !is_nacl && target_cpu != "x86" &&
+-        (use_gold || use_lld) && !allow_posix_link_time_opt &&
++        (use_gold || use_lld) && !is_bsd && !allow_posix_link_time_opt &&
+         !is_official_build) {
+       ldflags += [ "-Wl,--gdb-index" ]
+     }

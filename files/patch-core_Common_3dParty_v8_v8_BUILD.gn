@@ -1,0 +1,32 @@
+--- core/Common/3dParty/v8/v8/BUILD.gn.orig	2017-08-28 22:27:25 UTC
++++ core/Common/3dParty/v8/v8/BUILD.gn
+@@ -2511,7 +2511,7 @@ v8_component("v8_libbase") {
+     ]
+   }
+ 
+-  if (is_linux) {
++  if (is_linux && !is_bsd) {
+     sources += [
+       "src/base/debug/stack_trace_posix.cc",
+       "src/base/platform/platform-linux.cc",
+@@ -2531,6 +2531,12 @@ v8_component("v8_libbase") {
+       "dl",
+       "rt",
+     ]
++  } else if (is_bsd) {
++    sources += [
++      "src/base/debug/stack_trace_posix.cc",
++      "src/base/platform/platform-freebsd.cc",
++    ]
++    libs = [ "rt", "execinfo" ]
+   } else if (is_android) {
+     if (current_toolchain == host_toolchain) {
+       libs = [
+@@ -2818,6 +2824,7 @@ if (is_component_build) {
+       ":v8_base",
+       ":v8_maybe_snapshot",
+     ]
++#    libs = ["execinfo"]
+ 
+     if (v8_use_snapshot) {
+       public_deps += [ ":v8_builtins_generators" ]

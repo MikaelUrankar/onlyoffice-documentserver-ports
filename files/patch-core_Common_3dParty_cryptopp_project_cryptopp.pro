@@ -1,4 +1,4 @@
---- core/Common/3dParty/cryptopp/project/cryptopp.pro.orig	2020-05-22 08:21:42 UTC
+--- core/Common/3dParty/cryptopp/project/cryptopp.pro.orig	2021-09-30 12:13:32 UTC
 +++ core/Common/3dParty/cryptopp/project/cryptopp.pro
 @@ -11,6 +11,7 @@ PWD_ROOT_DIR = $$PWD
  
