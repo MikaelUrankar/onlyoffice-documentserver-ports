@@ -1,0 +1,85 @@
+--- server/Makefile.orig	2020-05-22 10:21:44.000000000 +0200
++++ server/Makefile	2020-07-29 16:23:28.820018000 +0200
+@@ -1,4 +1,4 @@
+-GRUNT = grunt
++GRUNT = ../sdkjs/build/node_modules/grunt/node_modules/.bin/grunt
+ GRUNT_FLAGS = --no-color -v
+ 
+ GRUNT_FILES = Gruntfile.js.out
+@@ -44,7 +44,7 @@ else
+     endif
+ endif
+ 
+-TARGET := $(PLATFORM)_$(ARCHITECTURE)
++#TARGET := $(PLATFORM)_$(ARCHITECTURE)
+ 
+ OUTPUT = ../build_tools/out/$(TARGET)/onlyoffice/documentserver/server
+ 
+@@ -86,47 +86,47 @@ DEBUG = $(BRANDING_DIR)/debug.js
+ all: $(SPELLCHECKER_DICTIONARIES) $(TOOLS) $(SCHEMA) $(CORE_FONTS) $(LICENSE) $(WELCOME) $(INFO) build-date
+ 
+ build-date: $(GRUNT_FILES)
+-	sed "s|\(const buildVersion = \).*|\1'${PRODUCT_VERSION}';|" -i $(COMMON_DEFINES_JS)
+-	sed "s|\(const buildNumber = \).*|\1${BUILD_NUMBER};|" -i $(COMMON_DEFINES_JS)
+-	sed "s|\(const buildDate = \).*|\1'$$(date +%F)';|" -i $(LICENSE_JS)
++	sed -i '' "s|\(const buildVersion = \).*|\1'${PRODUCT_VERSION}';|" $(COMMON_DEFINES_JS)
++	sed -i '' "s|\(const buildNumber = \).*|\1${BUILD_NUMBER};|" $(COMMON_DEFINES_JS)
++	sed -i '' "s|\(const buildDate = \).*|\1'$$(date +%F)';|" $(LICENSE_JS)
+ 	test -e $(DEBUG) && \
+ 	cp $(DEBUG) $(OUTPUT)/Common/sources || true
+ 
+ $(SPELLCHECKER_DICTIONARIES): $(GRUNT_FILES)
+ 	mkdir -p $(SPELLCHECKER_DICTIONARIES) && \
+-		cp -r -t $(SPELLCHECKER_DICTIONARIES) $(SPELLCHECKER_DICTIONARY_FILES)
++		cp -r $(SPELLCHECKER_DICTIONARY_FILES) $(SPELLCHECKER_DICTIONARIES)
+ 
+ $(SCHEMA):
+ 	mkdir -p $(SCHEMA) && \
+-		cp -r -t $(SCHEMA) $(SCHEMA_FILES)
++		cp -r $(SCHEMA_FILES) $(SCHEMA)
+ 
+ $(TOOLS):
+ 	mkdir -p $(TOOLS) && \
+-		cp -r -t $(TOOLS) $(TOOLS_FILES)
++		cp -r $(TOOLS_FILES) $(TOOLS)
+ 
+ $(LICENSE):
+ 	mkdir -p $(OUTPUT) && \
+-		cp -r -t $(OUTPUT) $(LICENSE_FILES)
++		cp -r $(LICENSE_FILES) $(OUTPUT)
+ 
+ $(GRUNT_FILES):
+ 	cd $(@D) && \
+ 		npm install && \
+ 		$(GRUNT_ENV) $(GRUNT) $(GRUNT_FLAGS)
+ 		mkdir -p $(OUTPUT)
+-		cp -r -t $(OUTPUT) ./build/server/*
++		cp -r ./build/server/* $(OUTPUT)
+ 	echo "Done" > $@
+ 
+ $(WELCOME):
+ 	mkdir -p $(WELCOME) && \
+-		cp -r -t $(WELCOME) $(WELCOME_FILES)
++		cp -r $(WELCOME_FILES) $(WELCOME)
+ 
+ $(INFO):
+ 	mkdir -p $(INFO) && \
+-		cp -r -t $(INFO) $(INFO_FILES)
++		cp -r $(INFO_FILES) $(INFO)
+ 
+ $(CORE_FONTS):
+ 	mkdir -p $(CORE_FONTS) && \
+-		cp -r -t $(CORE_FONTS) $(CORE_FONTS_FILES)
++		cp -r $(CORE_FONTS_FILES) $(CORE_FONTS)
+ 
+ clean:
+ 	rm -rf $(GRUNT_FILES)
+@@ -139,7 +139,7 @@ install:
+ 	mkdir -p ${DESTDIR}/var/log/onlyoffice/documentserver
+ 	mkdir -p ${DESTDIR}/var/lib/onlyoffice/documentserver/App_Data
+ 
+-	cp -fr -t ${DESTDIR}${DOCUMENT_ROOT} build/* ../web-apps/deploy/*
++	cp -fr build/* ../web-apps/deploy/* ${DESTDIR}${DOCUMENT_ROOT}
+ 	mkdir -p ${DESTDIR}/etc/onlyoffice/documentserver
+ 	mv ${DESTDIR}${DOCUMENT_ROOT}/server/Common/config/* ${DESTDIR}/etc/onlyoffice/documentserver
+ 
