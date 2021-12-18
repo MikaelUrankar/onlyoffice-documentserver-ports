@@ -1,7 +1,7 @@
 --- build_tools/tools/freebsd/automate.py.orig	2021-12-10 12:33:38 UTC
 +++ build_tools/tools/freebsd/automate.py
 @@ -0,0 +1,104 @@
-+#!/usr/bin/env python2.7
++#!/usr/bin/env python
 +
 +import sys
 +sys.path.append('../../scripts')

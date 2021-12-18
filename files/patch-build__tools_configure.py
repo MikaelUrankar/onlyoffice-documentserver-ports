@@ -1,11 +1,5 @@
 --- build_tools/configure.py.orig	2021-12-08 10:18:20 UTC
 +++ build_tools/configure.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2.7
- 
- import os
- import sys
 @@ -14,7 +14,7 @@ parser.add_option("--clean", action="store", type="str
  parser.add_option("--module", action="store", type="string", dest="module", default="builder", help="defines what modules to build. You can specify several of them, e.g. --module 'core desktop builder server mobile'")
  parser.add_option("--develop", action="store", type="string", dest="develop", default="0", help="defines develop mode")

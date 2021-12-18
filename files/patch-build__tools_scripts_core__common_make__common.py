@@ -1,11 +1,5 @@
 --- build_tools/scripts/core_common/make_common.py.orig	2021-11-16 07:07:24 UTC
 +++ build_tools/scripts/core_common/make_common.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2.7
- 
- import sys
- sys.path.append('modules')
 @@ -7,20 +7,21 @@ sys.path.append('..')
  import config
  import base

@@ -1,14 +1,28 @@
---- server/package.json.orig	2021-09-28 08:06:55 UTC
-+++ server/package.json
-@@ -34,6 +34,7 @@
-     "mkdir": {
-       "server": {
-         "options": {
-+          "mode": "0755",
-           "create": [
-             "./build/server"
-           ]
-@@ -59,7 +60,8 @@
+--- server/package.json.orig	2021-09-28 10:06:55.000000000 +0200
++++ server/package.json	2021-12-16 18:40:37.841834000 +0100
+@@ -24,21 +24,6 @@
+     },
+     "develop-copy": {
+       "server": {}
+-    },
+-    "clean": {
+-      "options": {
+-        "force": true
+-      },
+-      "server": "./build/server"
+-    },
+-    "mkdir": {
+-      "server": {
+-        "options": {
+-          "create": [
+-            "./build/server"
+-          ]
+-        }
+-      }
+     }
+   },
+   "postprocess": {
+@@ -59,7 +44,8 @@
      "grunt-check-dependencies": "^1.0.0",
      "grunt-contrib-clean": "^2.0.0",
      "grunt-contrib-copy": "^1.0.0",

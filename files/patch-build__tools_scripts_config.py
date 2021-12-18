@@ -1,11 +1,5 @@
 --- build_tools/scripts/config.py.orig	2021-12-08 10:18:20 UTC
 +++ build_tools/scripts/config.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2.7
- 
- import base
- import os
 @@ -26,6 +26,7 @@ def parse():
    global platforms
    platforms = ["win_64", "win_32", "win_64_xp", "win_32_xp", 

@@ -15,7 +15,7 @@
        base.copy_file(core_dir + "/Common/3dParty/icu/" + platform + "/build/libicudata.so.58", converter_dir + "/libicudata.so.58")
        base.copy_file(core_dir + "/Common/3dParty/icu/" + platform + "/build/libicuuc.so.58", converter_dir + "/libicuuc.so.58")
  
-@@ -102,11 +102,14 @@ def make():
+@@ -102,11 +102,15 @@ def make():
  
      if (0 == platform.find("win")):
        base.copy_files(core_dir + "/Common/3dParty/v8/v8/out.gn/" + platform + "/release/icudt*.dat", converter_dir + "/")
@@ -27,6 +27,24 @@
      # builder
      base.copy_exe(core_build_dir + "/bin/" + platform_postfix, converter_dir, "docbuilder")
 +    # XXX warning under FreeBSD
++    build_server_dir = git_dir + "/DocumentBuilder/empty"
      base.copy_dir(git_dir + "/DocumentBuilder/empty", converter_dir + "/empty")
  
      # js
+@@ -119,9 +123,13 @@ def make():
+     base.copy_sdkjs_plugins(js_dir + "/sdkjs-plugins", False, True)
+     base.copy_sdkjs_plugins_server(js_dir + "/sdkjs-plugins", False, True)
+     base.create_dir(js_dir + "/sdkjs-plugins/v1")
+-    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js", js_dir + "/sdkjs-plugins/v1/plugins.js")
+-    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js", js_dir + "/sdkjs-plugins/v1/plugins-ui.js")
+-    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css", js_dir + "/sdkjs-plugins/v1/plugins.css")
++#    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js", js_dir + "/sdkjs-plugins/v1/plugins.js")
++#    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js", js_dir + "/sdkjs-plugins/v1/plugins-ui.js")
++#    base.download("https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css", js_dir + "/sdkjs-plugins/v1/plugins.css")
++    base.copy_file(plugins_dir + "/v1/plugins.js", js_dir + "/sdkjs-plugins/v1/plugins.js")
++    base.copy_file(plugins_dir + "/v1/plugins-ui.js", js_dir + "/sdkjs-plugins/v1/plugins-ui.js")
++    base.copy_file(plugins_dir + "/v1/plugins.css", js_dir + "/sdkjs-plugins/v1/plugins.css")
++
+     base.support_old_versions_plugins(js_dir + "/sdkjs-plugins")
+     
+     # tools

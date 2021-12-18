@@ -1,0 +1,11 @@
+--- web-apps/build/package.json.orig	2021-12-12 18:45:10.990189000 +0100
++++ web-apps/build/package.json	2021-12-12 18:45:30.857087000 +0100
+@@ -29,7 +29,6 @@
+   },
+   "devDependencies": {
+     "chai": "1.9.1",
+-    "mocha": "^6.2.2",
+-    "grunt-mocha": "^1.0.0"
++    "mocha": "^6.2.2"
+   }
+ }
