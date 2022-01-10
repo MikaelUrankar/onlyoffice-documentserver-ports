@@ -23,14 +23,16 @@ CONFIGURATION:
   Optionally in case of a jail with local IP:
     update /var/db/postgres/data13/pg_hba.conf accordingly
 
-3. Configure rabbitmq by setting a password to the guest account:
+3. Create a new rabbitmq user for the ONLYOFFICE Document Server configuration (don't forget to change the password):
   # service rabbitmq start
-  # rabbitmqctl change_password guest
-  and change it in /usr/local/www/onlyoffice/documentserver/server/Common/config/default.json accordingly
+  # rabbitmqctl add_user onlyoffice password
+  # rabbitmqctl set_user_tags onlyoffice administrator
+  # rabbitmqctl set_permissions -p / onlyoffice ".*" ".*" ".*"
+  and change it in %%WWWDIR%%/documentserver/server/Common/config/default.json accordingly
 
 4. Setup supervisord in order to execute documentserver services:
   - let supervisord.conf load files contained in this directory by adding to
-    /usr/local/etc/supervisord.conf:
+    %%PREFIX%%/etc/supervisord.conf:
 [include]
 files = %%ETCDIR%%/onlyoffice/documentserver/supervisor/*.conf
 

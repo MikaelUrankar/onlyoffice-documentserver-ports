@@ -83,6 +83,7 @@ PLIST_SUB=	DS_GROUPNAME=${DS_GROUPNAME} \
 		DS_USERNAME=${DS_USERNAME}
 SUB_FILES=	pkg-message
 SUB_LIST=	ETCDIR=${ETCDIR} \
+		PREFIX=${PREFIX} \
 		WWWDIR=${WWWDIR}
 
 MAKE_ENV=	BUILD_NUMBER="1" \
@@ -188,6 +189,8 @@ do-install:
 	${RM} ${WRKSRC}/document-server-package/common/documentserver/config/*-mac.json ${WRKSRC}/document-server-package/common/documentserver/config/*-windows.json
 	cd ${WRKSRC}/document-server-package/common/documentserver/supervisor && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR}/documentserver/supervisor "-name *\.conf"
 	cd ${WRKSRC}/document-server-package/common/documentserver/logrotate && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR}/documentserver/logrotate "-name *\.conf"
+	${CP} ${WRKSRC}/document-server-package/common/documentserver/nginx/ds.conf ${STAGEDIR}${ETCDIR}/documentserver/nginx
+	cd ${WRKSRC}/document-server-package/common/documentserver/nginx && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR}/documentserver/nginx "-name *\.conf.tmpl"
 	cd ${WRKSRC}/document-server-package/common/documentserver/nginx/includes && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR}/documentserver/nginx/includes "-name *\.conf"
 	cd ${WRKSRC}/document-server-package/common/documentserver/config && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR}/documentserver
 
