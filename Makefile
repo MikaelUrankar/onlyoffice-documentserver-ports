@@ -36,7 +36,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}supervisor>0:sysutils/py-supervisor@${PY_FLA
 		rabbitmq>0:net/rabbitmq \
 		webfonts>=0:x11-fonts/webfonts
 
-USES=		autoreconf:build gmake gnome iconv pgsql pkgconfig \
+USES=		autoreconf:build dos2unix gmake gnome iconv pgsql pkgconfig \
 		python:3.7+,build qt:5
 USE_QT=		qmake_build
 USE_GITHUB=	yes
@@ -89,6 +89,8 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 MAKE_ENV=	BUILD_NUMBER="1" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
 		PRODUCT_VERSION="${DISTVERSION}"
+
+DOS2UNIX_FILES=	document-server-package/common/documentserver/nginx/includes/http-common.conf.m4
 
 post-extract:
 	@${MV} ${WRKDIR}/v8 ${WRKSRC}/core/Common/3dParty/v8
