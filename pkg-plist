@@ -1680,7 +1680,7 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/sdkjs/slide/themes/themes.js
 %%WWWDIR%%/documentserver/sdkjs/word/sdk-all-min.js
 %%WWWDIR%%/documentserver/sdkjs/word/sdk-all.js
-%%WWWDIR%%/documentserver/server/DocService/docservice
+@(,,755) %%WWWDIR%%/documentserver/server/DocService/docservice
 %%WWWDIR%%/documentserver/server/FileConverter/bin/AllFonts.js
 %%WWWDIR%%/documentserver/server/FileConverter/bin/DoctRenderer.config
 %%WWWDIR%%/documentserver/server/FileConverter/bin/docbuilder
@@ -1701,9 +1701,9 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libgraphics.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libkernel.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/x2t
-%%WWWDIR%%/documentserver/server/FileConverter/converter
+@(,,755) %%WWWDIR%%/documentserver/server/FileConverter/converter
 %%WWWDIR%%/documentserver/server/Metrics/config/config.js
-%%WWWDIR%%/documentserver/server/Metrics/metrics
+@(,,755) %%WWWDIR%%/documentserver/server/Metrics/metrics
 %%WWWDIR%%/documentserver/server/Metrics/node_modules/modern-syslog/build/Release/core.node
 %%WWWDIR%%/documentserver/server/info/img/favicon.ico
 %%WWWDIR%%/documentserver/server/info/img/icon-cross.png
