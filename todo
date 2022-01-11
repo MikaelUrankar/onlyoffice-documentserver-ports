@@ -12,3 +12,10 @@ Check if we need to ifdef linux || defined(__FreeBSD__)
 core/DesktopEditor/xml/libxml2/nanohttp.c (if defined(HAVE_NETDB_H) && defined(HOST_NOT_FOUND) && defined(linux))
 
 /usr/local/onlyofficedocumentserver/fonts is generated dynamically, depending on fonts installed on the system. Find a way to generate pkg-plist accordingly.
+
+dos2unix:
+/usr/local/etc/onlyoffice/documentserver/nginx/includes/http-common.conf
+
+Fix pkg-message:
+modify /usr/local/etc/onlyoffice/documentserver/default.json
+nginx: add ds.conf in the http {} block
