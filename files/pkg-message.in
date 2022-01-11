@@ -28,7 +28,7 @@ CONFIGURATION:
   # rabbitmqctl add_user onlyoffice password
   # rabbitmqctl set_user_tags onlyoffice administrator
   # rabbitmqctl set_permissions -p / onlyoffice ".*" ".*" ".*"
-  and change it in %%WWWDIR%%/documentserver/server/Common/config/default.json accordingly
+  and change it in %%ETCDIR%%/documentserver/default.json accordingly
 
 4. Setup supervisord in order to execute documentserver services:
   - let supervisord.conf load files contained in this directory by adding to
@@ -39,8 +39,10 @@ files = %%ETCDIR%%/onlyoffice/documentserver/supervisor/*.conf
   - start supervisord:
     # service supervisord start
 
-5. XXX Setup nginx:
-  - nginx conf files are located in: %%ETCDIR%%/documentserver/nginx/includes
+5. Setup nginx:
+  - nginx conf files are located in: %%ETCDIR%%/documentserver/nginx
+  - Add the following line in your http {} block:
+include %%ETCDIR%%/documentserver/nginx/ds.conf;
 
   - start nginx:
     # service nginx start
