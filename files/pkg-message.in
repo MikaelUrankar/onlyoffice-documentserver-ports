@@ -3,6 +3,13 @@
   message: <<EOM
 CONFIGURATION:
 -------------
+The configuration file can be found (or created) at the following path:
+  %%ETCDIR%%/documentserver/local.json.
+The default values are available in the default.json configuration file,
+which is available in the folders above. Please do not edit the contents of the
+default.json file directly. The default values will be restored each time you
+upgrade Document Server to a new version and all your changes will be lost. 
+
 1. Enable services at startup in the /etc/rc.conf file:
   postgresql_enable="YES"
   nginx_enable="YES"
@@ -28,7 +35,7 @@ CONFIGURATION:
   # rabbitmqctl add_user onlyoffice password
   # rabbitmqctl set_user_tags onlyoffice administrator
   # rabbitmqctl set_permissions -p / onlyoffice ".*" ".*" ".*"
-  and change it in %%ETCDIR%%/documentserver/local.json accordingly
+  and change it in %%ETCDIR%%/documentserver/local.json accordingly.
 
 4. Setup supervisord in order to execute documentserver services:
   - let supervisord.conf load files contained in this directory by adding to
@@ -41,6 +48,7 @@ files = %%ETCDIR%%/onlyoffice/documentserver/supervisor/*.conf
 
 5. Setup nginx:
   - nginx sample configuration files are located in: %%ETCDIR%%/documentserver/nginx
+    Do not edit them as they will be restored everytime the port is updated.
 
   - start nginx:
     # service nginx start
