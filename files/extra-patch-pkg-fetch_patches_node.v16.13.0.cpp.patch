@@ -1,11 +1,11 @@
 --- server/node_modules/pkg-fetch/patches/node.v16.13.0.cpp.patch.orig	2021-12-30 20:04:18.203959000 +0100
 +++ server/node_modules/pkg-fetch/patches/node.v16.13.0.cpp.patch	2021-12-30 20:09:53.210319000 +0100
-@@ -521,3 +521,160 @@ index 0000000000..fb2d47f52b
+@@ -521,3 +521,171 @@ index 0000000000..fb2d47f52b
               'cflags_cc!': [ '-fno-rtti' ],
             }],
             [ 'OS == "mac" or OS == "ios"', {
-+--- node/deps/openssl/config/archs/linux-elf/no-asm/openssl-cl.gypi.orig	2019-08-06 20:46:23 UTC
-++++ node/deps/openssl/config/archs/linux-elf/no-asm/openssl-cl.gypi
++--- deps/openssl/config/archs/linux-elf/no-asm/openssl-cl.gypi.orig	2019-08-06 20:46:23 UTC
+++++ deps/openssl/config/archs/linux-elf/no-asm/openssl-cl.gypi
 +@@ -12,7 +12,7 @@
 +       '-Wall -O3 -fomit-frame-pointer',
 +     ],
@@ -15,8 +15,8 @@
 +     ],
 +     'openssl_cli_srcs_linux-elf': [
 +       'openssl/apps/asn1pars.c',
-+--- node/deps/openssl/config/archs/linux-elf/no-asm/openssl.gypi.orig	2021-03-17 20:16:25 UTC
-++++ node/deps/openssl/config/archs/linux-elf/no-asm/openssl.gypi
++--- deps/openssl/config/archs/linux-elf/no-asm/openssl.gypi.orig	2021-03-17 20:16:25 UTC
+++++ deps/openssl/config/archs/linux-elf/no-asm/openssl.gypi
 +@@ -698,7 +698,7 @@
 +       '-Wall -O3 -fomit-frame-pointer',
 +     ],
@@ -26,8 +26,19 @@
 +     ],
 +   },
 +   'include_dirs': [
-+--- node/deps/openssl/openssl-cl_no_asm.gypi.orig	2020-09-08 12:17:10 UTC
-++++ node/deps/openssl/openssl-cl_no_asm.gypi
++--- deps/openssl/openssl_no_asm.gypi.orig	2020-09-08 12:17:11 UTC
+++++ deps/openssl/openssl_no_asm.gypi
++@@ -48,7 +48,7 @@
++       'includes': ['config/archs/linux64-mips64/no-asm/openssl.gypi'],
++     }, {
++       # Other architectures don't use assembly
++-      'includes': ['config/archs/linux-x86_64/no-asm/openssl.gypi'],
+++      'includes': ['config/archs/linux-elf/no-asm/openssl.gypi'],
++     }],
++   ],
++ }
++--- deps/openssl/openssl-cl_no_asm.gypi.orig	2020-09-08 12:17:10 UTC
+++++ deps/openssl/openssl-cl_no_asm.gypi
 +@@ -1,4 +1,5 @@
 + {
 ++  'defines': ['OPENSSL_NO_ASM'],
@@ -43,19 +54,8 @@
 +     }],
 +   ],
 + }
-+--- node/deps/openssl/openssl_no_asm.gypi.orig	2020-09-08 12:17:11 UTC
-++++ node/deps/openssl/openssl_no_asm.gypi
-+@@ -48,7 +48,7 @@
-+       'includes': ['config/archs/linux64-mips64/no-asm/openssl.gypi'],
-+     }, {
-+       # Other architectures don't use assembly
-+-      'includes': ['config/archs/linux-x86_64/no-asm/openssl.gypi'],
-++      'includes': ['config/archs/linux-elf/no-asm/openssl.gypi'],
-+     }],
-+   ],
-+ }
-+--- node/deps/v8/src/base/platform/platform-freebsd.cc.orig	2020-06-30 17:49:16 UTC
-++++ node/deps/v8/src/base/platform/platform-freebsd.cc
++--- deps/v8/src/base/platform/platform-freebsd.cc.orig	2020-06-30 17:49:16 UTC
+++++ deps/v8/src/base/platform/platform-freebsd.cc
 +@@ -82,8 +82,8 @@ std::vector<OS::SharedLibraryAddress> OS::GetSharedLib
 +             lib_name = std::string(path);
 +           }
@@ -116,8 +116,8 @@
 + 
 + void OS::AdjustSchedulingParams() {}
 + 
-+--- node/deps/v8/src/codegen/ppc/constants-ppc.h.orig	2020-06-30 17:49:17 UTC
-++++ node/deps/v8/src/codegen/ppc/constants-ppc.h
++--- deps/v8/src/codegen/ppc/constants-ppc.h.orig	2020-06-30 17:49:17 UTC
+++++ deps/v8/src/codegen/ppc/constants-ppc.h
 +@@ -36,7 +36,7 @@
 + #endif
 + 
@@ -136,8 +136,8 @@
 + #define ABI_CALL_VIA_IP 1
 + #else
 + #define ABI_CALL_VIA_IP 0
-+--- node/deps/v8/src/libsampler/sampler.cc.orig	2021-10-08 13:38:46 UTC
-++++ node/deps/v8/src/libsampler/sampler.cc
++--- deps/v8/src/libsampler/sampler.cc.orig	2021-10-08 13:38:46 UTC
+++++ deps/v8/src/libsampler/sampler.cc
 +@@ -490,6 +490,10 @@ void SignalHandler::FillRegisterState(void* context, R
 +   state->pc = reinterpret_cast<void*>(mcontext.__gregs[_REG_PC]);
 +   state->sp = reinterpret_cast<void*>(mcontext.__gregs[_REG_SP]);
@@ -149,8 +149,8 @@
 + #endif  // V8_HOST_ARCH_*
 + #elif V8_OS_NETBSD
 + #if V8_HOST_ARCH_IA32
-+--- node/node.gypi.orig	2021-03-03 05:40:19 UTC
-++++ node/node.gypi
++--- node.gypi.orig	2021-03-03 05:40:19 UTC
+++++ node.gypi
 +@@ -319,6 +319,9 @@
 +     [ 'node_use_openssl=="true"', {
 +       'defines': [ 'HAVE_OPENSSL=1' ],
@@ -161,3 +161,14 @@
 +         [ 'node_shared_openssl=="false"', {
 +           'dependencies': [
 +             './deps/openssl/openssl.gyp:openssl',
++--- src/cares_wrap.h.orig	2021-08-18 22:13:12 UTC
+++++ src/cares_wrap.h
++@@ -22,7 +22,7 @@
++ # include <netdb.h>
++ #endif  // __POSIX__
++ 
++-# include <ares_nameser.h>
+++# include <arpa/nameser.h>
++ 
++ namespace node {
++ namespace cares_wrap {
