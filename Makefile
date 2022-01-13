@@ -92,6 +92,8 @@ MAKE_ENV=	BUILD_NUMBER="1" \
 
 DOS2UNIX_FILES=	document-server-package/common/documentserver/nginx/includes/http-common.conf.m4
 
+CONFLICTS_BUILD=devel/googletest
+
 post-extract:
 	@${MV} ${WRKDIR}/v8 ${WRKSRC}/core/Common/3dParty/v8
 
