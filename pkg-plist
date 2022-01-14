@@ -4,7 +4,7 @@ bin/documentserver-static-gzip.sh
 bin/documentserver-update-securelink.sh
 %%ETCDIR%%/documentserver/default.json
 %%ETCDIR%%/documentserver/development-freebsd.json
-@sample %%ETCDIR%%/documentserver/local.json.sample
+@sample(ds,ds,640)  %%ETCDIR%%/documentserver/local.json.sample
 %%ETCDIR%%/documentserver/log4js/development.json
 %%ETCDIR%%/documentserver/log4js/production.json
 %%ETCDIR%%/documentserver/logrotate/ds.conf
