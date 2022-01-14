@@ -41,7 +41,7 @@ upgrade Document Server to a new version and all your changes will be lost.
   - let supervisord.conf load files contained in this directory by adding to
     %%PREFIX%%/etc/supervisord.conf:
 [include]
-files = %%ETCDIR%%/onlyoffice/documentserver/supervisor/*.conf
+files = %%ETCDIR%%/documentserver/supervisor/*.conf
 
   - start supervisord:
     # service supervisord start
