@@ -8,11 +8,11 @@ bin/documentserver-update-securelink.sh
 %%ETCDIR%%/documentserver/log4js/development.json
 %%ETCDIR%%/documentserver/log4js/production.json
 %%ETCDIR%%/documentserver/logrotate/ds.conf
-%%ETCDIR%%/documentserver/nginx/ds.conf.sample
-%%ETCDIR%%/documentserver/nginx/includes/ds-common.conf.sample
-%%ETCDIR%%/documentserver/nginx/includes/ds-docservice.conf.sample
-%%ETCDIR%%/documentserver/nginx/includes/ds-letsencrypt.conf.sample
-%%ETCDIR%%/documentserver/nginx/includes/http-common.conf.sample
+@sample %%ETCDIR%%/documentserver/nginx/ds.conf.sample
+@sample %%ETCDIR%%/documentserver/nginx/includes/ds-common.conf.sample
+@sample %%ETCDIR%%/documentserver/nginx/includes/ds-docservice.conf.sample
+@sample %%ETCDIR%%/documentserver/nginx/includes/ds-letsencrypt.conf.sample
+@sample %%ETCDIR%%/documentserver/nginx/includes/http-common.conf.sample
 %%ETCDIR%%/documentserver/production-freebsd.json
 %%ETCDIR%%/documentserver/supervisor/ds-converter.conf
 %%ETCDIR%%/documentserver/supervisor/ds-docservice.conf
@@ -474,190 +474,6 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/document-templates/sample/sample.docx
 %%WWWDIR%%/documentserver/document-templates/sample/sample.pptx
 %%WWWDIR%%/documentserver/document-templates/sample/sample.xlsx
-%%WWWDIR%%/documentserver/fonts/000
-%%WWWDIR%%/documentserver/fonts/001
-%%WWWDIR%%/documentserver/fonts/002
-%%WWWDIR%%/documentserver/fonts/003
-%%WWWDIR%%/documentserver/fonts/004
-%%WWWDIR%%/documentserver/fonts/005
-%%WWWDIR%%/documentserver/fonts/006
-%%WWWDIR%%/documentserver/fonts/007
-%%WWWDIR%%/documentserver/fonts/008
-%%WWWDIR%%/documentserver/fonts/009
-%%WWWDIR%%/documentserver/fonts/010
-%%WWWDIR%%/documentserver/fonts/011
-%%WWWDIR%%/documentserver/fonts/012
-%%WWWDIR%%/documentserver/fonts/013
-%%WWWDIR%%/documentserver/fonts/014
-%%WWWDIR%%/documentserver/fonts/015
-%%WWWDIR%%/documentserver/fonts/016
-%%WWWDIR%%/documentserver/fonts/017
-%%WWWDIR%%/documentserver/fonts/018
-%%WWWDIR%%/documentserver/fonts/019
-%%WWWDIR%%/documentserver/fonts/020
-%%WWWDIR%%/documentserver/fonts/021
-%%WWWDIR%%/documentserver/fonts/022
-%%WWWDIR%%/documentserver/fonts/023
-%%WWWDIR%%/documentserver/fonts/024
-%%WWWDIR%%/documentserver/fonts/025
-%%WWWDIR%%/documentserver/fonts/026
-%%WWWDIR%%/documentserver/fonts/027
-%%WWWDIR%%/documentserver/fonts/028
-%%WWWDIR%%/documentserver/fonts/029
-%%WWWDIR%%/documentserver/fonts/030
-%%WWWDIR%%/documentserver/fonts/031
-%%WWWDIR%%/documentserver/fonts/032
-%%WWWDIR%%/documentserver/fonts/033
-%%WWWDIR%%/documentserver/fonts/034
-%%WWWDIR%%/documentserver/fonts/035
-%%WWWDIR%%/documentserver/fonts/036
-%%WWWDIR%%/documentserver/fonts/037
-%%WWWDIR%%/documentserver/fonts/038
-%%WWWDIR%%/documentserver/fonts/039
-%%WWWDIR%%/documentserver/fonts/040
-%%WWWDIR%%/documentserver/fonts/041
-%%WWWDIR%%/documentserver/fonts/042
-%%WWWDIR%%/documentserver/fonts/043
-%%WWWDIR%%/documentserver/fonts/044
-%%WWWDIR%%/documentserver/fonts/045
-%%WWWDIR%%/documentserver/fonts/046
-%%WWWDIR%%/documentserver/fonts/047
-%%WWWDIR%%/documentserver/fonts/048
-%%WWWDIR%%/documentserver/fonts/049
-%%WWWDIR%%/documentserver/fonts/050
-%%WWWDIR%%/documentserver/fonts/051
-%%WWWDIR%%/documentserver/fonts/052
-%%WWWDIR%%/documentserver/fonts/053
-%%WWWDIR%%/documentserver/fonts/054
-%%WWWDIR%%/documentserver/fonts/055
-%%WWWDIR%%/documentserver/fonts/056
-%%WWWDIR%%/documentserver/fonts/057
-%%WWWDIR%%/documentserver/fonts/058
-%%WWWDIR%%/documentserver/fonts/059
-%%WWWDIR%%/documentserver/fonts/060
-%%WWWDIR%%/documentserver/fonts/061
-%%WWWDIR%%/documentserver/fonts/062
-%%WWWDIR%%/documentserver/fonts/063
-%%WWWDIR%%/documentserver/fonts/064
-%%WWWDIR%%/documentserver/fonts/065
-%%WWWDIR%%/documentserver/fonts/066
-%%WWWDIR%%/documentserver/fonts/067
-%%WWWDIR%%/documentserver/fonts/068
-%%WWWDIR%%/documentserver/fonts/069
-%%WWWDIR%%/documentserver/fonts/070
-%%WWWDIR%%/documentserver/fonts/071
-%%WWWDIR%%/documentserver/fonts/072
-%%WWWDIR%%/documentserver/fonts/073
-%%WWWDIR%%/documentserver/fonts/074
-%%WWWDIR%%/documentserver/fonts/075
-%%WWWDIR%%/documentserver/fonts/076
-%%WWWDIR%%/documentserver/fonts/077
-%%WWWDIR%%/documentserver/fonts/078
-%%WWWDIR%%/documentserver/fonts/079
-%%WWWDIR%%/documentserver/fonts/080
-%%WWWDIR%%/documentserver/fonts/081
-%%WWWDIR%%/documentserver/fonts/082
-%%WWWDIR%%/documentserver/fonts/083
-%%WWWDIR%%/documentserver/fonts/084
-%%WWWDIR%%/documentserver/fonts/085
-%%WWWDIR%%/documentserver/fonts/086
-%%WWWDIR%%/documentserver/fonts/087
-%%WWWDIR%%/documentserver/fonts/088
-%%WWWDIR%%/documentserver/fonts/089
-%%WWWDIR%%/documentserver/fonts/090
-%%WWWDIR%%/documentserver/fonts/091
-%%WWWDIR%%/documentserver/fonts/092
-%%WWWDIR%%/documentserver/fonts/093
-%%WWWDIR%%/documentserver/fonts/094
-%%WWWDIR%%/documentserver/fonts/095
-%%WWWDIR%%/documentserver/fonts/096
-%%WWWDIR%%/documentserver/fonts/097
-%%WWWDIR%%/documentserver/fonts/098
-%%WWWDIR%%/documentserver/fonts/099
-%%WWWDIR%%/documentserver/fonts/100
-%%WWWDIR%%/documentserver/fonts/101
-%%WWWDIR%%/documentserver/fonts/102
-%%WWWDIR%%/documentserver/fonts/103
-%%WWWDIR%%/documentserver/fonts/104
-%%WWWDIR%%/documentserver/fonts/105
-%%WWWDIR%%/documentserver/fonts/106
-%%WWWDIR%%/documentserver/fonts/107
-%%WWWDIR%%/documentserver/fonts/108
-%%WWWDIR%%/documentserver/fonts/109
-%%WWWDIR%%/documentserver/fonts/110
-%%WWWDIR%%/documentserver/fonts/111
-%%WWWDIR%%/documentserver/fonts/112
-%%WWWDIR%%/documentserver/fonts/113
-%%WWWDIR%%/documentserver/fonts/114
-%%WWWDIR%%/documentserver/fonts/115
-%%WWWDIR%%/documentserver/fonts/116
-%%WWWDIR%%/documentserver/fonts/117
-%%WWWDIR%%/documentserver/fonts/118
-%%WWWDIR%%/documentserver/fonts/119
-%%WWWDIR%%/documentserver/fonts/120
-%%WWWDIR%%/documentserver/fonts/121
-%%WWWDIR%%/documentserver/fonts/122
-%%WWWDIR%%/documentserver/fonts/123
-%%WWWDIR%%/documentserver/fonts/124
-%%WWWDIR%%/documentserver/fonts/125
-%%WWWDIR%%/documentserver/fonts/126
-%%WWWDIR%%/documentserver/fonts/127
-%%WWWDIR%%/documentserver/fonts/128
-%%WWWDIR%%/documentserver/fonts/129
-%%WWWDIR%%/documentserver/fonts/130
-%%WWWDIR%%/documentserver/fonts/131
-%%WWWDIR%%/documentserver/fonts/132
-%%WWWDIR%%/documentserver/fonts/133
-%%WWWDIR%%/documentserver/fonts/134
-%%WWWDIR%%/documentserver/fonts/135
-%%WWWDIR%%/documentserver/fonts/136
-%%WWWDIR%%/documentserver/fonts/137
-%%WWWDIR%%/documentserver/fonts/138
-%%WWWDIR%%/documentserver/fonts/139
-%%WWWDIR%%/documentserver/fonts/140
-%%WWWDIR%%/documentserver/fonts/141
-%%WWWDIR%%/documentserver/fonts/142
-%%WWWDIR%%/documentserver/fonts/143
-%%WWWDIR%%/documentserver/fonts/144
-%%WWWDIR%%/documentserver/fonts/145
-%%WWWDIR%%/documentserver/fonts/146
-%%WWWDIR%%/documentserver/fonts/147
-%%WWWDIR%%/documentserver/fonts/148
-%%WWWDIR%%/documentserver/fonts/149
-%%WWWDIR%%/documentserver/fonts/150
-%%WWWDIR%%/documentserver/fonts/151
-%%WWWDIR%%/documentserver/fonts/152
-%%WWWDIR%%/documentserver/fonts/153
-%%WWWDIR%%/documentserver/fonts/154
-%%WWWDIR%%/documentserver/fonts/155
-%%WWWDIR%%/documentserver/fonts/156
-%%WWWDIR%%/documentserver/fonts/157
-%%WWWDIR%%/documentserver/fonts/158
-%%WWWDIR%%/documentserver/fonts/159
-%%WWWDIR%%/documentserver/fonts/160
-%%WWWDIR%%/documentserver/fonts/161
-%%WWWDIR%%/documentserver/fonts/162
-%%WWWDIR%%/documentserver/fonts/163
-%%WWWDIR%%/documentserver/fonts/164
-%%WWWDIR%%/documentserver/fonts/165
-%%WWWDIR%%/documentserver/fonts/166
-%%WWWDIR%%/documentserver/fonts/167
-%%WWWDIR%%/documentserver/fonts/168
-%%WWWDIR%%/documentserver/fonts/169
-%%WWWDIR%%/documentserver/fonts/170
-%%WWWDIR%%/documentserver/fonts/171
-%%WWWDIR%%/documentserver/fonts/172
-%%WWWDIR%%/documentserver/fonts/173
-%%WWWDIR%%/documentserver/fonts/174
-%%WWWDIR%%/documentserver/fonts/175
-%%WWWDIR%%/documentserver/fonts/176
-%%WWWDIR%%/documentserver/fonts/177
-%%WWWDIR%%/documentserver/fonts/178
-%%WWWDIR%%/documentserver/fonts/179
-%%WWWDIR%%/documentserver/fonts/180
-%%WWWDIR%%/documentserver/fonts/181
-%%WWWDIR%%/documentserver/fonts/182
-%%WWWDIR%%/documentserver/fonts/183
 %%WWWDIR%%/documentserver/license/Backbone.license
 %%WWWDIR%%/documentserver/license/Bootstrap.license
 %%WWWDIR%%/documentserver/license/Hunspell.license
@@ -1388,7 +1204,6 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/sdkjs/cell/css/main.css
 %%WWWDIR%%/documentserver/sdkjs/cell/sdk-all-min.js
 %%WWWDIR%%/documentserver/sdkjs/cell/sdk-all.js
-%%WWWDIR%%/documentserver/sdkjs/common/AllFonts.js
 %%WWWDIR%%/documentserver/sdkjs/common/Charts/ChartStyles.js
 %%WWWDIR%%/documentserver/sdkjs/common/Images/content_controls/img.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/content_controls/img@1.25x.png
@@ -1470,16 +1285,6 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/sdkjs/common/Images/cursors/text_copy.svg
 %%WWWDIR%%/documentserver/sdkjs/common/Images/cursors/text_copy_2x.cur
 %%WWWDIR%%/documentserver/sdkjs/common/Images/cursors/text_copy_2x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail_ea.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail_ea@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail_ea@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail_ea@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts_thumbnail_ea@2x.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/icons/anchor.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/icons/anchor@1.25x.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/icons/anchor@1.5x.png
@@ -1550,11 +1355,6 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/sdkjs/common/Images/reporter/buttons@1.5x.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/reporter/buttons@1.75x.png
 %%WWWDIR%%/documentserver/sdkjs/common/Images/reporter/buttons@2x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/themes_thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/themes_thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/themes_thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/themes_thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/common/Images/themes_thumbnail@2x.png
 %%WWWDIR%%/documentserver/sdkjs/common/Native/jquery_native.js
 %%WWWDIR%%/documentserver/sdkjs/common/Native/native.js
 %%WWWDIR%%/documentserver/sdkjs/common/Native/native_graphics.js
@@ -1578,115 +1378,14 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/sdkjs/slide/themes/src/09_dotted.pptx
 %%WWWDIR%%/documentserver/sdkjs/slide/themes/src/10_corner.pptx
 %%WWWDIR%%/documentserver/sdkjs/slide/themes/src/11_tort.pptx
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/media/image1.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/media/image2.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/media/image3.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/media/image4.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme3/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/media/image1.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme5/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/media/image1.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/media/image2.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme6/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/media/image1.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/media/image2.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/media/image3.jpg
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme8/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/theme.bin
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail@1.25x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail@1.5x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail@1.75x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail@2x.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail_android.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/thumbnail_ios.png
-%%WWWDIR%%/documentserver/sdkjs/slide/themes/themes.js
 %%WWWDIR%%/documentserver/sdkjs/word/sdk-all-min.js
 %%WWWDIR%%/documentserver/sdkjs/word/sdk-all.js
 @(,,755) %%WWWDIR%%/documentserver/server/DocService/docservice
-%%WWWDIR%%/documentserver/server/FileConverter/bin/AllFonts.js
 %%WWWDIR%%/documentserver/server/FileConverter/bin/DoctRenderer.config
 %%WWWDIR%%/documentserver/server/FileConverter/bin/docbuilder
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/docx.bin
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/pptx.bin
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/xlsx.bin
-%%WWWDIR%%/documentserver/server/FileConverter/bin/font_selection.bin
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libDjVuFile.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libEpubFile.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libFb2File.so
@@ -22893,13 +22592,6 @@ lib/libkernel.so
 %%WWWDIR%%/documentserver/web-apps/vendor/sockjs/sockjs.min.js
 %%WWWDIR%%/documentserver/web-apps/vendor/underscore/underscore-min.js
 %%WWWDIR%%/documentserver/web-apps/vendor/xregexp/xregexp-all-min.js
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme1/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme10/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme11/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme2/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme4/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme7/media
-@dir %%WWWDIR%%/documentserver/sdkjs/slide/themes/theme9/media
 @dir %%WWWDIR%%/documentserver/server/Common/config/log4js
 @dir %%WWWDIR%%/documentserver/web-apps/apps/documenteditor/main/resources/img/doc-formats
 @dir %%WWWDIR%%/documentserver/web-apps/apps/documenteditor/main/resources/img/load-mask
@@ -22908,9 +22600,6 @@ lib/libkernel.so
 @dir %%WWWDIR%%/documentserver/web-apps/apps/presentationeditor/main/resources/img/load-mask
 @dir %%WWWDIR%%/documentserver/web-apps/apps/spreadsheeteditor/main/resources/img/doc-formats
 @dir %%WWWDIR%%/documentserver/web-apps/apps/spreadsheeteditor/main/resources/img/load-mask
-@dir %%WWWDIR%%/documentserver/fonts
-@owner %%DS_USERNAME%%
-@group %%DS_GROUPNAME%%
 @dir /var/db/onlyoffice/documentserver/App_Data/cache/files
 @dir /var/db/onlyoffice/documentserver/App_Data/cache
 @dir /var/db/onlyoffice/documentserver/App_Data/docbuilder
@@ -22922,6 +22611,15 @@ lib/libkernel.so
 @dir /var/log/onlyoffice/documentserver/metrics
 @dir /var/log/onlyoffice/documentserver
 @dir /var/log/onlyoffice
-@owner
-@group
 @dir %%WWWDIR%%/Data
+@postexec chown -R %%DS_USERNAME%%:%%DS_GROUPNAME%% /var/db/onlyoffice
+@postexec chown -R %%DS_USERNAME%%:%%DS_GROUPNAME%% /var/log/onlyoffice 
+@postexec chown -R %%DS_USERNAME%%:%%DS_GROUPNAME%% %D/%%WWWDIR%%/documentserver
+@postunexec rm -rf %D/%%WWWDIR%%/documentserver/fonts
+@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme*
+@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/common/Images/themes*
+@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts*
+@postunexec rm -f %D/%%WWWDIR%%/documentserver/sdkjs/common/AllFonts.js
+@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/font_selection.bin
+@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/AllFonts.js
+@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/fonts.log

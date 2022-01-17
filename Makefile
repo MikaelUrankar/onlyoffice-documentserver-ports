@@ -208,43 +208,4 @@ do-install:
 		 ${STAGEDIR}${WWWDIR}/Data \
 		 ${STAGEDIR}${WWWDIR}/documentserver/fonts
 
-# generate allfonts.js and thumbnail (/usr/local/bin/documentserver-generate-allfonts.sh)
-	env LD_LIBRARY_PATH=${STAGEDIR}${PREFIX}/lib \
-	"${STAGEDIR}${WWWDIR}/documentserver/server/tools/allfontsgen" \
-	  --input="${STAGEDIR}${WWWDIR}/documentserver/core-fonts" \
-	  --allfonts-web="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/common/AllFonts.js" \
-	  --allfonts="${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin/AllFonts.js" \
-	  --images="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/common/Images" \
-	  --selection="${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin/font_selection.bin" \
-	  --output-web="${STAGEDIR}${WWWDIR}/documentserver/fonts" \
-	  --use-system="true"
-
-	env LD_LIBRARY_PATH=${STAGEDIR}${PREFIX}/lib \
-	"${STAGEDIR}${WWWDIR}/documentserver/server/tools/allthemesgen"\
-	  --converter-dir="${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin"\
-	  --src="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/slide/themes"\
-	  --output="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/common/Images"
-
-	env LD_LIBRARY_PATH=${STAGEDIR}${PREFIX}/lib \
-	"${STAGEDIR}${WWWDIR}/documentserver/server/tools/allthemesgen"\
-	  --converter-dir="${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin"\
-	  --src="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/slide/themes"\
-	  --output="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/common/Images"\
-	  --postfix="ios"\
-	  --params="280,224"
-
-	env LD_LIBRARY_PATH=${STAGEDIR}${PREFIX}/lib \
-	"${STAGEDIR}${WWWDIR}/documentserver/server/tools/allthemesgen"\
-	  --converter-dir="${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin"\
-	  --src="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/slide/themes"\
-	  --output="${STAGEDIR}${WWWDIR}/documentserver/sdkjs/common/Images"\
-	  --postfix="android"\
-	  --params="280,224"
-
-# Fix fonts path
-	@${REINPLACE_CMD} 's|${STAGEDIR}||' \
-		${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin/AllFonts.js
-
-	@${RM} ${STAGEDIR}${WWWDIR}/documentserver/server/FileConverter/bin/fonts.log
-
 .include <bsd.port.mk>
