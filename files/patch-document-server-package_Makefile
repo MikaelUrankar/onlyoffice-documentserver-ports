@@ -1,4 +1,4 @@
---- document-server-package/Makefile	2020-07-29 13:34:33 UTC
+--- document-server-package/Makefile.orig	2021-09-28 10:03:34 UTC
 +++ document-server-package/Makefile
 @@ -134,6 +134,21 @@ else
  		DS_EXAMLE := /var/www/$(DS_PREFIX)-example
@@ -22,17 +22,20 @@
  	ifeq ($(UNAME_S),Darwin)
  		PLATFORM := mac
  		SHARED_EXT := .dylib
-@@ -152,6 +167,9 @@ else
+@@ -152,6 +167,12 @@ else
  	ifeq ($(UNAME_P),x86_64)
  		ARCHITECTURE := 64
  	endif
 +	ifeq ($(UNAME_P),amd64)
 +		ARCHITECTURE := 64
 +	endif
++	ifeq ($(UNAME_P),aarch64)
++		ARCHITECTURE := 64
++	endif
  	ifneq ($(filter %86,$(UNAME_P)),)
  		ARCHITECTURE := 32
  	endif
-@@ -293,7 +311,7 @@ clean:
+@@ -293,7 +314,7 @@ clean:
  		
  documentserver:
  	mkdir -p $(DOCUMENTSERVER_FILES)
@@ -41,7 +44,7 @@
  
  	mkdir -p $(DOCUMENTSERVER_CONFIG)
  	mkdir -p $(DOCUMENTSERVER_CONFIG)/log4js
-@@ -302,25 +320,25 @@ documentserver:
+@@ -302,25 +323,25 @@ documentserver:
  	mv -f $(DOCUMENTSERVER)/server/Common/config/log4js/*.json $(DOCUMENTSERVER_CONFIG)/log4js/
  
  	# rename product specific folders
@@ -74,7 +77,7 @@
  	rm -fr $(3RD_PARTY_LICENSE_FILES)
  
  ifeq ($(PLATFORM),win)
-@@ -329,33 +347,33 @@ ifeq ($(PLATFORM),win)
+@@ -329,33 +350,33 @@ ifeq ($(PLATFORM),win)
  	cat exe/license/3rd-Party.txt ; >> $(DOCUMENTSERVER)/3rd-Party.txt
  endif
  
@@ -117,7 +120,7 @@
  
  ifeq ($(PLATFORM),win)		
  	cd $(DOCUMENTSERVER)/npm && \
-@@ -369,7 +387,7 @@ endif		
+@@ -369,7 +390,7 @@ endif		
  
  documentserver-example:
  	mkdir -p $(DOCUMENTSERVER_EXAMPLE)
@@ -126,7 +129,7 @@
  	
  	mkdir -p $(DOCUMENTSERVER_EXAMPLE_CONFIG)
  
-@@ -378,7 +396,7 @@ documentserver-example:
+@@ -378,7 +399,7 @@ documentserver-example:
  	# Prevent for modification original config
  	chmod ug=r $(DOCUMENTSERVER_EXAMPLE_CONFIG)/*.json
  
@@ -135,7 +138,7 @@
  
  	echo "Done" > $@
  
-@@ -394,27 +412,27 @@ rpm/$(PACKAGE_NAME).spec : rpm/package.spec
+@@ -394,27 +415,27 @@ rpm/$(PACKAGE_NAME).spec : rpm/package.spec
  exe/$(PACKAGE_NAME).iss : exe/package.iss
  	mv -f $< $@
  
@@ -183,21 +186,12 @@
  ifeq ($(COMPANY_NAME_LOW),onlyoffice)
  M4_PARAMS += -D M4_DS_EXAMPLE_ENABLE=1
  endif
-@@ -440,6 +458,8 @@ deb/debian/$(PACKAGE_NAME).links : deb/debian/package.
+@@ -439,6 +460,8 @@ deb/debian/$(PACKAGE_NAME).links : deb/debian/package.
+ 
  %.exe:
  	cd $(@D) && $(ISCC) $(ISCC_PARAMS) $(PACKAGE_NAME).iss
- 
-+freebsd: $(COMMON_DEPS) $(LINUX_DEPS) documentserver
 +
++freebsd: $(COMMON_DEPS) $(LINUX_DEPS) documentserver
+ 
  $(DEB): $(DEB_DEPS) $(COMMON_DEPS) $(LINUX_DEPS) documentserver documentserver-example
  	cd deb && dpkg-buildpackage -b -uc -us --changes-option=-u.
- 
-@@ -447,7 +467,7 @@ $(EXE): $(WIN_DEPS) $(COMMON_DEPS) documentserver docu
- 
- $(TAR):
- 	cd ../build_tools/out/$(TARGET)/$(COMPANY_NAME_LOW) && \
--	tar -czf $(TAR) $(PRODUCT_SHORT_NAME_LOW)-snap
-+	tar -czf $(TAR) $(PRODUCT_SHORT_NAME_LOW)
- 
- $(ISXDL):
- 	$(TOUCH) $(ISXDL) && \
