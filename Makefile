@@ -150,17 +150,14 @@ post-patch:
 	@${FIND} ${WRKSRC}/server -type f -name npm-shrinkwrap.json -delete
 
 do-build:
-# npm sucks....
 	@${CP} ${FILESDIR}/packagejsons/server/package-lock.json ${WRKSRC}/server
 	@${CP} ${FILESDIR}/packagejsons/server/Common/package-lock.json ${WRKSRC}/server/Common
 
-# npm really sucks....
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install optipng-bin@5.1.0
 	@cd ${WRKSRC}/web-apps/build ; node_modules/.bin/patch-package
 	@cd ${WRKSRC}/web-apps/build/node_modules ; ${SETENV} ${MAKE_ENV} npm build optipng-bin
 
-# npm really really sucks....
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt-cli
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt
