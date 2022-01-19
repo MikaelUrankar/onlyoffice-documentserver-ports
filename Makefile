@@ -74,8 +74,8 @@ USE_LDCONFIG=	yes
 WWWDIR=		${PREFIX}/www/onlyoffice
 ETCDIR=		${PREFIX}/etc/onlyoffice
 
-DS_USERNAME=	ds
-DS_GROUPNAME=	ds
+DS_USERNAME=	onlyoffice
+DS_GROUPNAME=	onlyoffice
 
 USERS=		${DS_USERNAME}
 GROUPS=		${DS_GROUPNAME}
