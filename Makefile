@@ -8,7 +8,7 @@ MASTER_SITES+=	http://mikael.urankar.free.fr/v8/:source1 \
 		SF/optipng/OptiPNG/optipng-0.7.7/:source4
 DISTFILES+=	v8-8.7.220.31_all.tar.gz:source1 \
 		node-v16.13.0.tar.gz:source3 \
-		npm-cache-onlyoffice.tar.gz:source2 \
+		npm-cache-onlyoffice-${DISTVERSION}.tar.gz:source2 \
 		optipng-0.7.7.tar.gz:source4
 
 MAINTAINER=	mikael@FreeBSD.org

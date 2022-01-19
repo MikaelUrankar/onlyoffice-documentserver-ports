@@ -1,10 +1,10 @@
-TIMESTAMP = 1642615457
+TIMESTAMP = 1642617711
 SHA256 (v8-8.7.220.31_all.tar.gz) = 0d2e1355cbbb80130d87f9e0acfb94c72846f820339b8a1003875230a5d0fa2f
 SIZE (v8-8.7.220.31_all.tar.gz) = 305810432
 SHA256 (node-v16.13.0.tar.gz) = 9c00e5b6024cfcbc9105f9c58cf160762e78659a345d100c5bd80a7fb38c684f
 SIZE (node-v16.13.0.tar.gz) = 63735070
-SHA256 (npm-cache-onlyoffice.tar.gz) = 85c72a0b06439352f2a0ead2fb1412436c38b0dc3200c620f52967415adbf225
-SIZE (npm-cache-onlyoffice.tar.gz) = 263763627
+SHA256 (npm-cache-onlyoffice-7.0.0.tar.gz) = 997f25b80781e39f3883e2330e9938a15ade6219a07acd6817abbe915bf44d09
+SIZE (npm-cache-onlyoffice-7.0.0.tar.gz) = 333569255
 SHA256 (optipng-0.7.7.tar.gz) = 4f32f233cef870b3f95d3ad6428bfe4224ef34908f1b42b0badf858216654452
 SIZE (optipng-0.7.7.tar.gz) = 2329555
 SHA256 (ONLYOFFICE-DocumentServer-v7.0.0_GH0.tar.gz) = c228d579a1434ecf9df1319efa8bc7ac6f4a814b50bf98d6564d4cd1d50aa3eb
