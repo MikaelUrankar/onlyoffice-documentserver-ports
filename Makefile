@@ -2,8 +2,8 @@ PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
 DISTVERSION=	7.0.0
 CATEGORIES=	www
-MASTER_SITES+=	http://mikael.urankar.free.fr/v8/:source1 \
-		http://mikael.urankar.free.fr/onlyoffice/:source2 \
+MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
+		LOCAL/mikael/onlyoffice/:source2 \
 		https://nodejs.org/dist/v16.13.0/:source3 \
 		SF/optipng/OptiPNG/optipng-0.7.7/:source4
 DISTFILES+=	v8-8.7.220.31_all.tar.gz:source1 \
