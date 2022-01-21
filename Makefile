@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.0.0
+DISTVERSION=	7.0.0.133
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -8,7 +8,7 @@ MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		SF/optipng/OptiPNG/optipng-0.7.7/:source4
 DISTFILES+=	v8-8.7.220.31_all.tar.gz:source1 \
 		node-v16.13.0.tar.gz:source3 \
-		npm-cache-onlyoffice-${DS_VERSION}.tar.gz:source2 \
+		npm-cache-onlyoffice-${DISTVERSION}.tar.gz:source2 \
 		optipng-0.7.7.tar.gz:source4
 
 MAINTAINER=	mikael@FreeBSD.org
@@ -43,28 +43,29 @@ USE_QT=		qmake_build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TUPLE=	ONLYOFFICE:core:v${DS_VERSION}:core/core \
-		ONLYOFFICE:core-fonts:v${DS_VERSION}:corefonts/core-fonts \
-		ONLYOFFICE:dictionaries:v${DS_VERSION}:dictionaries/dictionaries \
-		ONLYOFFICE:document-server-integration:v${DS_VERSION}:dsi/document-server-integration \
-		ONLYOFFICE:document-templates:v${DS_VERSION}:dt/document-templates \
-		ONLYOFFICE:sdkjs:v${DS_VERSION}:sdkjs/sdkjs \
-		ONLYOFFICE:server:v${DS_VERSION}:server/server \
-		ONLYOFFICE:web-apps:v${DS_VERSION}:webapps/web-apps \
-		ONLYOFFICE:plugin-highlightcode:v${DS_VERSION}:sdkjs_plugins_highlightcode/sdkjs-plugins/plugin-highlightcode \
-		ONLYOFFICE:plugin-macros:v${DS_VERSION}:sdkjs_plugins_macros/sdkjs-plugins/plugin-macros \
-		ONLYOFFICE:plugin-mendeley:v${DS_VERSION}:sdkjs_plugins_mendeley/sdkjs-plugins/plugin-mendeley \
-		ONLYOFFICE:plugin-ocr:v${DS_VERSION}:sdkjs_plugins_ocr/sdkjs-plugins/plugin-ocr \
-		ONLYOFFICE:plugin-photoeditor:v${DS_VERSION}:sdkjs_plugins_photoeditor/sdkjs-plugins/plugin-photoeditor \
-		ONLYOFFICE:plugin-speech:v${DS_VERSION}:sdkjs_plugins_speech/sdkjs-plugins/plugin-speech \
-		ONLYOFFICE:plugin-thesaurus:v${DS_VERSION}:sdkjs_plugins_thesaurus/sdkjs-plugins/plugin-thesaurus \
-		ONLYOFFICE:plugin-translator:v${DS_VERSION}:sdkjs_plugins_translator/sdkjs-plugins/plugin-translator \
-		ONLYOFFICE:plugin-youtube:v${DS_VERSION}:sdkjs_plugins_youtube/sdkjs-plugins/plugin-youtube \
-		ONLYOFFICE:plugin-zotero:v${DS_VERSION}:sdkjs_plugins_zotero/sdkjs-plugins/plugin-zotero \
-		ONLYOFFICE:build_tools:v${DS_VERSION}:buildtools/build_tools \
-		ONLYOFFICE:DocumentBuilder:v${DS_VERSION}:document_builder/DocumentBuilder \
+GH_TAGNAME=	v7.0.0
+GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
+		ONLYOFFICE:core-fonts:v${DISTVERSION}:corefonts/core-fonts \
+		ONLYOFFICE:dictionaries:v${DISTVERSION}:dictionaries/dictionaries \
+		ONLYOFFICE:document-server-integration:v${DISTVERSION}:dsi/document-server-integration \
+		ONLYOFFICE:document-templates:v${DISTVERSION}:dt/document-templates \
+		ONLYOFFICE:sdkjs:v${DISTVERSION}:sdkjs/sdkjs \
+		ONLYOFFICE:server:v${DISTVERSION}:server/server \
+		ONLYOFFICE:web-apps:v${DISTVERSION}:webapps/web-apps \
+		ONLYOFFICE:plugin-highlightcode:v${DISTVERSION}:sdkjs_plugins_highlightcode/sdkjs-plugins/plugin-highlightcode \
+		ONLYOFFICE:plugin-macros:v${DISTVERSION}:sdkjs_plugins_macros/sdkjs-plugins/plugin-macros \
+		ONLYOFFICE:plugin-mendeley:v${DISTVERSION}:sdkjs_plugins_mendeley/sdkjs-plugins/plugin-mendeley \
+		ONLYOFFICE:plugin-ocr:v${DISTVERSION}:sdkjs_plugins_ocr/sdkjs-plugins/plugin-ocr \
+		ONLYOFFICE:plugin-photoeditor:v${DISTVERSION}:sdkjs_plugins_photoeditor/sdkjs-plugins/plugin-photoeditor \
+		ONLYOFFICE:plugin-speech:v${DISTVERSION}:sdkjs_plugins_speech/sdkjs-plugins/plugin-speech \
+		ONLYOFFICE:plugin-thesaurus:v${DISTVERSION}:sdkjs_plugins_thesaurus/sdkjs-plugins/plugin-thesaurus \
+		ONLYOFFICE:plugin-translator:v${DISTVERSION}:sdkjs_plugins_translator/sdkjs-plugins/plugin-translator \
+		ONLYOFFICE:plugin-youtube:v${DISTVERSION}:sdkjs_plugins_youtube/sdkjs-plugins/plugin-youtube \
+		ONLYOFFICE:plugin-zotero:v${DISTVERSION}:sdkjs_plugins_zotero/sdkjs-plugins/plugin-zotero \
+		ONLYOFFICE:build_tools:v${DISTVERSION}:buildtools/build_tools \
+		ONLYOFFICE:DocumentBuilder:v${DISTVERSION}:document_builder/DocumentBuilder \
 		ONLYOFFICE:onlyoffice.github.io:342e8f66:sdkjs_plugins_v1/onlyoffice.github.io \
-		ONLYOFFICE:document-server-package:v${DS_VERSION}:dsp/document-server-package \
+		ONLYOFFICE:document-server-package:v${DISTVERSION}:dsp/document-server-package \
 		hackers-painters:katana-parser:499118d3:hackers_painters_katana/core/Common/3dParty/html/katana-parser \
 		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser
 
@@ -90,9 +91,6 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 MAKE_ENV=	BUILD_NUMBER="1" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
 		PRODUCT_VERSION="${DISTVERSION}"
-
-DS_MINOR_VERSION=	133
-DS_VERSION=	${DISTVERSION}.${DS_MINOR_VERSION}
 
 DOS2UNIX_FILES=	document-server-package/common/documentserver/nginx/includes/http-common.conf.m4
 
