@@ -6,7 +6,8 @@ MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
 		https://nodejs.org/dist/v16.13.0/:source3 \
 		SF/optipng/OptiPNG/optipng-0.7.7/:source4
-DISTFILES+=	v8-8.7.220.31_all.tar.gz:source1 \
+DISTFILES+=	v8-6.8.275.32_all.tar.gz:source1 \
+		v8-6.8.275.32_122amd64.tar.gz:source1 \
 		node-v16.13.0.tar.gz:source3 \
 		npm-cache-onlyoffice-${DISTVERSION}.tar.gz:source2 \
 		optipng-0.7.7.tar.gz:source4
@@ -16,6 +17,9 @@ COMMENT=	Secure office and productivity apps
 
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+ONLY_FOR_ARCHS=	amd64
+ONLY_FOR_ARCHS_REASON=	uses amd64 binaries
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		binutils>=0:devel/binutils \
@@ -98,6 +102,8 @@ CONFLICTS_BUILD=devel/googletest
 
 post-extract:
 	@${MV} ${WRKDIR}/v8 ${WRKSRC}/core/Common/3dParty/v8
+	@${MKDIR} ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
+	@${MV} ${WRKDIR}/v8_obj_122amd64/obj ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
 
 	@${MKDIR} ${WRKDIR}/.pkg-cache/node
 	@${CP} ${DISTDIR}/node-v16.13.0.tar.gz ${WRKDIR}/.pkg-cache/node
@@ -113,11 +119,9 @@ post-extract:
 
 post-patch:
 	@${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|' \
-		${WRKSRC}/core/Common/3dParty/v8/v8/build/toolchain/gcc_toolchain.gni \
-		${WRKSRC}/core/Common/3dParty/v8/v8/buildtools/third_party/libc++/BUILD.gn \
+		${WRKSRC}/core/Common/3dParty/icu/icu.pri \
 		${WRKSRC}/core/DesktopEditor/fontengine/ApplicationFonts.cpp
 	@${REINPLACE_CMD} -e 's|%%CC%%|${CC}|' -e 's|%%CXX%%|${CXX}|' \
-		${WRKSRC}/core/Common/3dParty/v8/v8/build/toolchain/gcc_toolchain.gni \
 		${WRKSRC}/core/Common/base.pri
 	@${REINPLACE_CMD} 's|%%WRKDIR%%|${WRKDIR}|' \
 		${WRKSRC}/document-server-package/Makefile
