@@ -7,6 +7,7 @@ MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		https://nodejs.org/dist/v16.13.0/:source3 \
 		SF/optipng/OptiPNG/optipng-0.7.7/:source4
 DISTFILES+=	v8-6.8.275.32_all.tar.gz:source1 \
+		v8-6.8.275.32_122aarch64.tar.gz:source1 \
 		v8-6.8.275.32_122amd64.tar.gz:source1 \
 		node-v16.13.0.tar.gz:source3 \
 		npm-cache-onlyoffice-${DISTVERSION}.tar.gz:source2 \
@@ -18,8 +19,8 @@ COMMENT=	Secure office and productivity apps
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-ONLY_FOR_ARCHS=	amd64
-ONLY_FOR_ARCHS_REASON=	uses amd64 binaries
+ONLY_FOR_ARCHS=	aarch64 amd64
+ONLY_FOR_ARCHS_REASON=	uses aarch64 or amd64 binaries
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		binutils>=0:devel/binutils \
@@ -103,7 +104,7 @@ CONFLICTS_BUILD=devel/googletest
 post-extract:
 	@${MV} ${WRKDIR}/v8 ${WRKSRC}/core/Common/3dParty/v8
 	@${MKDIR} ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
-	@${MV} ${WRKDIR}/v8_obj_122amd64/obj ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
+	@${MV} ${WRKDIR}/v8_obj_122${ARCH}/obj ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
 
 	@${MKDIR} ${WRKDIR}/.pkg-cache/node
 	@${CP} ${DISTDIR}/node-v16.13.0.tar.gz ${WRKDIR}/.pkg-cache/node
