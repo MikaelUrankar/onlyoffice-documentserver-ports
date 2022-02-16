@@ -29,7 +29,6 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		gn:devel/gn \
 		java:java/openjdk11 \
 		ninja:devel/ninja \
-		node:www/node16 \
 		npm:www/npm-node16
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
 		libcurl.so:ftp/curl \
@@ -42,7 +41,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}supervisor>0:sysutils/py-supervisor@${PY_FLA
 		rabbitmq>0:net/rabbitmq \
 		webfonts>=0:x11-fonts/webfonts
 
-USES=		autoreconf:build dos2unix fakeroot gmake gnome iconv pgsql pkgconfig \
+USES=		autoreconf:build dos2unix fakeroot gmake gnome iconv nodejs:16,build pgsql pkgconfig \
 		python:3.7+,build qt:5
 USE_QT=		qmake_build
 USE_GITHUB=	yes
@@ -162,7 +161,7 @@ do-build:
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install optipng-bin@5.1.0
 	@cd ${WRKSRC}/web-apps/build ; node_modules/.bin/patch-package
-	@cd ${WRKSRC}/web-apps/build/node_modules ; ${SETENV} ${MAKE_ENV} npm build optipng-bin
+	@cd ${WRKSRC}/web-apps/build/node_modules/optipng-bin ; ${SETENV} ${MAKE_ENV} npm run postinstall optipng-bin
 
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt-cli
