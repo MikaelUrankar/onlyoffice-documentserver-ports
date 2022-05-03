@@ -4,7 +4,7 @@
 CONFIGURATION:
 -------------
 The configuration file can be found (or created) at the following path:
-  %%ETCDIR%%/documentserver/local.json.
+  %%ETCDIR%%/documentserver/local.json
 The default values are available in the default.json configuration file,
 which is available in the folders above. Please do not edit the contents of the
 default.json file directly. The default values will be restored each time you
@@ -59,20 +59,7 @@ files = %%ETCDIR%%/documentserver/supervisor/*.conf
   - start nginx:
     # service nginx start
 
-6. Generate fonts and presentation themes:
-  # %%PREFIX%%/bin/documentserver-generate-allfonts.sh
-
-7. Follow the following doc If you want to use Onlyoffice with Nextcloud:
+6. Follow the following doc If you want to use Onlyoffice with Nextcloud:
   - https://api.onlyoffice.com/editors/nextcloud
 
-8. Enjoy.
-
-EOM
-}
-{ type: upgrade
-  message: <<EOM
-After each update, you have to generate the fonts and presentation themes:
-  # %%PREFIX%%/bin/documentserver-generate-allfonts.sh
-EOM
-}
-]
+7. Enjoy.
