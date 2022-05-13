@@ -22873,11 +22873,3 @@ lib/libkernel_network.so
 @owner
 @dir %%WWWDIR%%/Data
 @dir %%WWWDIR%%/documentserver/fonts
-@postunexec rm -rf %D/%%WWWDIR%%/documentserver/fonts
-@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/slide/themes/theme*
-@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/common/Images/themes*
-@postunexec rm -rf %D/%%WWWDIR%%/documentserver/sdkjs/common/Images/fonts*
-@postunexec rm -f %D/%%WWWDIR%%/documentserver/sdkjs/common/AllFonts.js
-@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/font_selection.bin
-@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/AllFonts.js
-@postunexec rm -f %D/%%WWWDIR%%/documentserver/server/FileConverter/bin/fonts.log
