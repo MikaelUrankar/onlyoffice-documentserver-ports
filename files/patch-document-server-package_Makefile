@@ -124,7 +124,7 @@
  	cd $(DOCUMENTSERVER)/npm && \
  		npm install && \
 -		pkg ./node_modules/json $(PKG_TARGET:%=-t %) -o json
-+		env PKG_CACHE_PATH=/root/onlyoffice-documentserver-ports/work/.pkg-cache "/root/onlyoffice-documentserver-ports/work/DocumentServer-7.1.0/server/node_modules/.bin/pkg" ./node_modules/json $(PKG_TARGET:%=-t %) -o json
++		env PKG_CACHE_PATH=%%WRKDIR%%/.pkg-cache "%%WRKSRC%%/server/node_modules/.bin/pkg" ./node_modules/json $(PKG_TARGET:%=-t %) -o json
  
  ifeq ($(PLATFORM),win)		
  	cd $(DOCUMENTSERVER)/npm && \

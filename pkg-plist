@@ -1437,6 +1437,7 @@ lib/libkernel_network.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/docx.bin
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/pptx.bin
 %%WWWDIR%%/documentserver/server/FileConverter/bin/empty/xlsx.bin
+%%WWWDIR%%/documentserver/server/FileConverter/bin/icudtl.dat
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libDjVuFile.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libDocxRenderer.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libEpubFile.so
