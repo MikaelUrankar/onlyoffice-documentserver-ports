@@ -19,8 +19,7 @@ COMMENT=	Secure office and productivity apps
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-ONLY_FOR_ARCHS=	aarch64 amd64
-ONLY_FOR_ARCHS_REASON=	uses aarch64 or amd64 binaries
+BROKEN_i386=	fails to build
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		boost-libs>0:devel/boost-libs \
@@ -102,7 +101,7 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 # node version used with "npm install pkg@5.5.1"
 NODE_VERSION_PKGFETCH=	16.13.0
 # node version used in the ports tree
-NODE_VERSION_PORTS=	16.14.2
+NODE_VERSION_PORTS=	16.15.1
 
 MAKE_ENV=	BUILD_NUMBER="1" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
@@ -118,17 +117,10 @@ CONFLICTS_BUILD=devel/googletest
 
 post-extract:
 	@${MV} ${WRKDIR}/v8 ${WRKSRC}/core/Common/3dParty/v8
-#	@${MKDIR} ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
-#	@${MV} ${WRKDIR}/v8_obj_122${ARCH}/obj ${WRKSRC}/core/Common/3dParty/v8/v8/out.gn/freebsd_64
 
 	@${MKDIR} ${WRKDIR}/.pkg-cache/node
 	@${CP} ${DISTDIR}/node-v${NODE_VERSION_PKGFETCH}.tar.gz ${DISTDIR}/node-v${NODE_VERSION_PORTS}.tar.gz \
 		${WRKDIR}/.pkg-cache/node
-# Checksum can be verified here: https://nodejs.org/dist/v${NODE_VERSION_PKGFETCH}/SHASUMS256.txt
-	@${ECHO} "9c00e5b6024cfcbc9105f9c58cf160762e78659a345d100c5bd80a7fb38c684f  node-v${NODE_VERSION_PKGFETCH}.tar.gz" > \
-		${WRKDIR}/.pkg-cache/node/node-v${NODE_VERSION_PKGFETCH}.tar.gz.sha256sum
-	@${ECHO} "082170f362c4da0e97f3a1899e3f5e4c998bbc245b803c77c6ab113a2b5cbd5f  node-v${NODE_VERSION_PKGPORTS}.tar.gz" > \
-		${WRKDIR}/.pkg-cache/node/node-v${NODE_VERSION_PORTS}.tar.gz.sha256sum
 
 	@${MKDIR} ${WRKSRC}/sdkjs-plugins/v1
 	@${CP} ${WRKSRC}/onlyoffice.github.io/sdkjs-plugins/v1/* ${WRKSRC}/sdkjs-plugins/v1
