@@ -12663,6 +12663,8 @@ lib/libkernel_network.so
 %%WWWDIR%%/documentserver/web-apps/vendor/xregexp/xregexp-all-min.js
 @owner onlyoffice
 @group onlyoffice
+@dir %%WWWDIR%%/documentserver/server/Common/config/log4js
+@dir %%WWWDIR%%/documentserver/web-apps/apps/documenteditor/mobile/locale/backup
 @dir /var/db/onlyoffice/documentserver/App_Data/cache/files
 @dir /var/db/onlyoffice/documentserver/App_Data/cache
 @dir /var/db/onlyoffice/documentserver/App_Data/docbuilder
