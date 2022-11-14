@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.2.0.204
+DISTVERSION=	7.2.1.34
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -47,7 +47,7 @@ USE_QT=		qmake:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TAGNAME=	v7.2.0
+GH_TAGNAME=	v7.2.1
 GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:core-fonts:v${DISTVERSION}:corefonts/core-fonts \
 		ONLYOFFICE:dictionaries:v${DISTVERSION}:dictionaries/dictionaries \
@@ -56,15 +56,7 @@ GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:sdkjs:v${DISTVERSION}:sdkjs/sdkjs \
 		ONLYOFFICE:server:v${DISTVERSION}:server/server \
 		ONLYOFFICE:web-apps:v${DISTVERSION}:webapps/web-apps \
-		ONLYOFFICE:plugin-macros:v${PLUGIN_VERSION}:sdkjs_plugins_macros/sdkjs-plugins/plugin-macros \
 		ONLYOFFICE:plugin-mendeley:v${PLUGIN_VERSION}:sdkjs_plugins_mendeley/sdkjs-plugins/plugin-mendeley \
-		ONLYOFFICE:plugin-ocr:v${PLUGIN_VERSION}:sdkjs_plugins_ocr/sdkjs-plugins/plugin-ocr \
-		ONLYOFFICE:plugin-photoeditor:v${PLUGIN_VERSION}:sdkjs_plugins_photoeditor/sdkjs-plugins/plugin-photoeditor \
-		ONLYOFFICE:plugin-speech:v${PLUGIN_VERSION}:sdkjs_plugins_speech/sdkjs-plugins/plugin-speech \
-		ONLYOFFICE:plugin-thesaurus:v${PLUGIN_VERSION}:sdkjs_plugins_thesaurus/sdkjs-plugins/plugin-thesaurus \
-		ONLYOFFICE:plugin-translator:v${PLUGIN_VERSION}:sdkjs_plugins_translator/sdkjs-plugins/plugin-translator \
-		ONLYOFFICE:plugin-youtube:v${PLUGIN_VERSION}:sdkjs_plugins_youtube/sdkjs-plugins/plugin-youtube \
-		ONLYOFFICE:plugin-zotero:v${PLUGIN_VERSION}:sdkjs_plugins_zotero/sdkjs-plugins/plugin-zotero \
 		ONLYOFFICE:build_tools:v${DISTVERSION}:buildtools/build_tools \
 		ONLYOFFICE:DocumentBuilder:626d1e44db3d06ceb8298215a67ef0475912d89a:document_builder/DocumentBuilder \
 		ONLYOFFICE:onlyoffice.github.io:b26d001664d771df4f663d2d3ba7dd4a188b6cab:sdkjs_plugins_v1/onlyoffice.github.io \
