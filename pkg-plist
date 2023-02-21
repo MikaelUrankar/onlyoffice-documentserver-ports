@@ -18,14 +18,17 @@ bin/documentserver-update-securelink.sh
 @sample %%ETCDIR%%/documentserver/nginx/includes/ds-mime.types.conf.sample
 @sample %%ETCDIR%%/documentserver/nginx/includes/http-common.conf.sample
 %%ETCDIR%%/documentserver/production-freebsd.json
+%%ETCDIR%%/documentserver/supervisor/ds-converter.conf
+%%ETCDIR%%/documentserver/supervisor/ds-docservice.conf
+%%ETCDIR%%/documentserver/supervisor/ds-metrics.conf
+%%ETCDIR%%/documentserver/supervisor/ds.conf
 lib/libDjVuFile.so
 lib/libDocxRenderer.so
 lib/libEpubFile.so
 lib/libFb2File.so
 lib/libHtmlFile2.so
 lib/libHtmlRenderer.so
-lib/libPdfReader.so
-lib/libPdfWriter.so
+lib/libPdfFile.so
 lib/libUnicodeConverter.so
 lib/libXpsFile.so
 lib/libdoctrenderer.so
@@ -1532,8 +1535,7 @@ lib/libkernel_network.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libFb2File.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libHtmlFile2.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libHtmlRenderer.so
-%%WWWDIR%%/documentserver/server/FileConverter/bin/libPdfReader.so
-%%WWWDIR%%/documentserver/server/FileConverter/bin/libPdfWriter.so
+%%WWWDIR%%/documentserver/server/FileConverter/bin/libPdfFile.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libUnicodeConverter.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libXpsFile.so
 %%WWWDIR%%/documentserver/server/FileConverter/bin/libdoctrenderer.so

@@ -19,14 +19,13 @@
 -import hunspell
 +#import hunspell
  import glew
--import harfbuzz
+ import harfbuzz
 -import hyphen
-+#import harfbuzz
-+import hyphen
- import socket_io
++#import hyphen
  
  def check_android_ndk_macos_arm(dir):
-@@ -35,16 +35,17 @@ def make():
+   if base.is_dir(dir + "/darwin-x86_64") and not base.is_dir(dir + "/darwin-arm64"):
+@@ -34,16 +34,16 @@ def make():
        if base.is_dir(toolchain):
          check_android_ndk_macos_arm(toolchain + "/prebuilt")
  
@@ -34,11 +33,10 @@
 -  cef.make()
 -  icu.make()
 -  openssl.make()
-+  if base.host_platform() != 'freebsd' :
-+    boost.make()
-+    cef.make()
-+    icu.make()
-+    openssl.make()
++#  boost.make()
++#  cef.make()
++#  icu.make()
++#  openssl.make()
    v8.make()
    html2.make()
 -  hunspell.make(False)
@@ -46,8 +44,8 @@
 +#  hunspell.make(False)
 +#  harfbuzz.make()
    glew.make()
--  hyphen.make()
-+  hyphen.make()
-   socket_io.make()
+-  hyphen.make()  
++#  hyphen.make()  
    
    if config.check_option("module", "mobile"):
+     if (config.check_option("platform", "android")):

@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.3.0.184
+DISTVERSION=	7.3.2.8
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -47,7 +47,7 @@ USE_QT=		qmake:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TAGNAME=	v7.3.0
+GH_TAGNAME=	v7.3.2
 GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:core-fonts:v${DISTVERSION}:corefonts/core-fonts \
 		ONLYOFFICE:dictionaries:v${DISTVERSION}:dictionaries/dictionaries \
@@ -62,12 +62,6 @@ GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:document-server-package:v${DISTVERSION}:dsp/document-server-package \
 		hackers-painters:katana-parser:499118d3:hackers_painters_katana/core/Common/3dParty/html/katana-parser \
 		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser
-
-#		socketio:socket.io-client-cpp:3.1.0:sicp/core/Common/3dParty/socketio/socket.io-client-cpp \
-#		zaphoyd:websocketpp:0.8.2:websocketpp/core/Common/3dParty/socketio/socket.io-client-cpp/lib/websocketpp \
-#		miloyip:rapidjson:012be8528783cdbf4b7a9e64f78bd8f056b97e24:rapidjson/core/Common/3dParty/socketio/socket.io-client-cpp/lib/rapidjson \
-#		chriskohlhoff:asio:asio-1-10-2-322-g230c0d2a:asio/core/Common/3dParty/socketio/socket.io-client-cpp/lib/asio \
-#		philsquared:Catch:v1.9.3-99-g9c07718b:catch
 
 OPTIONS_SINGLE=		DB
 OPTIONS_SINGLE_DB=	MYSQL PGSQL
@@ -100,11 +94,12 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 # node version used with "npm install pkg@5.5.1"
 NODE_VERSION_PKGFETCH=	16.13.0
 # node version used in the ports tree
-NODE_VERSION_PORTS=	16.19.0
+NODE_VERSION_PORTS=	16.19.1
 
-MAKE_ENV=	BUILD_NUMBER="1" \
+MAKE_ENV=	BUILD_NUMBER="8" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
-		PRODUCT_VERSION="${DISTVERSION}"
+		PRODUCT_VERSION=${DISTVERSION:C/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/} \
+		BUILD_NUMBER=${DISTVERSION:C/^[0-9]+\.[0-9]+\.[0-9]+\.([0-9]+)/\1/}
 
 # Don't create __pycache__ directory when executing node-gyp
 # This is a workaround to avoid filesystem violations during poudriere build
@@ -126,8 +121,6 @@ post-extract:
 
 	@${MV} ${WRKSRC}/server/Common/config/production-linux.json ${WRKSRC}/server/Common/config/production-freebsd.json
 	@${MV} ${WRKSRC}/server/Common/config/development-linux.json ${WRKSRC}/server/Common/config/development-freebsd.json
-
-#	@${MV} ${WRKDIR}/Catch2-1.9.3-99-g9c07718b/* ${WRKSRC}/core/Common/3dParty/socketio/socket.io-client-cpp/lib/catch
 
 	# linux has moved to systemd init files, continue to using supervisord for now
 	${MKDIR} ${WRKSRC}/document-server-package/common/documentserver/supervisor
@@ -185,15 +178,11 @@ post-patch:
 do-build:
 	${INSTALL_SCRIPT} ${FILESDIR}/npm ${BINARY_LINKDIR}/npm
 
-	@${CP} ${FILESDIR}/packagejsons/server/package-lock.json ${WRKSRC}/server
-#	@${CP} ${FILESDIR}/packagejsons/server/Common/package-lock.json ${WRKSRC}/server/Common
-
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install optipng-bin@5.1.0
 	@cd ${WRKSRC}/web-apps/build ; node_modules/.bin/patch-package
 	@cd ${WRKSRC}/web-apps/build/node_modules/optipng-bin ; ${SETENV} ${MAKE_ENV} npm run postinstall optipng-bin
 
-#	@cd ${WRKSRC}/web-apps/build ; ${SETENV} ${MAKE_ENV} npm install patch-package
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt-cli
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install pkg@5.5.1
