@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.2.2.56
+DISTVERSION=	7.3.0.184
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -47,7 +47,7 @@ USE_QT=		qmake:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TAGNAME=	v7.2.2
+GH_TAGNAME=	v7.3.0
 GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:core-fonts:v${DISTVERSION}:corefonts/core-fonts \
 		ONLYOFFICE:dictionaries:v${DISTVERSION}:dictionaries/dictionaries \
@@ -56,13 +56,18 @@ GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:sdkjs:v${DISTVERSION}:sdkjs/sdkjs \
 		ONLYOFFICE:server:v${DISTVERSION}:server/server \
 		ONLYOFFICE:web-apps:v${DISTVERSION}:webapps/web-apps \
-		ONLYOFFICE:plugin-mendeley:v${PLUGIN_VERSION}:sdkjs_plugins_mendeley/sdkjs-plugins/plugin-mendeley \
 		ONLYOFFICE:build_tools:v${DISTVERSION}:buildtools/build_tools \
 		ONLYOFFICE:DocumentBuilder:626d1e44db3d06ceb8298215a67ef0475912d89a:document_builder/DocumentBuilder \
 		ONLYOFFICE:onlyoffice.github.io:b26d001664d771df4f663d2d3ba7dd4a188b6cab:sdkjs_plugins_v1/onlyoffice.github.io \
 		ONLYOFFICE:document-server-package:v${DISTVERSION}:dsp/document-server-package \
 		hackers-painters:katana-parser:499118d3:hackers_painters_katana/core/Common/3dParty/html/katana-parser \
 		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser
+
+#		socketio:socket.io-client-cpp:3.1.0:sicp/core/Common/3dParty/socketio/socket.io-client-cpp \
+#		zaphoyd:websocketpp:0.8.2:websocketpp/core/Common/3dParty/socketio/socket.io-client-cpp/lib/websocketpp \
+#		miloyip:rapidjson:012be8528783cdbf4b7a9e64f78bd8f056b97e24:rapidjson/core/Common/3dParty/socketio/socket.io-client-cpp/lib/rapidjson \
+#		chriskohlhoff:asio:asio-1-10-2-322-g230c0d2a:asio/core/Common/3dParty/socketio/socket.io-client-cpp/lib/asio \
+#		philsquared:Catch:v1.9.3-99-g9c07718b:catch
 
 OPTIONS_SINGLE=		DB
 OPTIONS_SINGLE_DB=	MYSQL PGSQL
@@ -92,7 +97,6 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 		PREFIX=${PREFIX} \
 		WWWDIR=${WWWDIR}
 
-PLUGIN_VERSION=	7.2.0.8
 # node version used with "npm install pkg@5.5.1"
 NODE_VERSION_PKGFETCH=	16.13.0
 # node version used in the ports tree
@@ -123,6 +127,15 @@ post-extract:
 	@${MV} ${WRKSRC}/server/Common/config/production-linux.json ${WRKSRC}/server/Common/config/production-freebsd.json
 	@${MV} ${WRKSRC}/server/Common/config/development-linux.json ${WRKSRC}/server/Common/config/development-freebsd.json
 
+#	@${MV} ${WRKDIR}/Catch2-1.9.3-99-g9c07718b/* ${WRKSRC}/core/Common/3dParty/socketio/socket.io-client-cpp/lib/catch
+
+	# linux has moved to systemd init files, continue to using supervisord for now
+	${MKDIR} ${WRKSRC}/document-server-package/common/documentserver/supervisor
+.for i in ds-converter.conf ds-docservice.conf ds-metrics.conf ds.conf
+	${CP} ${FILESDIR}/${i} \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor
+.endfor
+
 post-patch:
 	@${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|' \
 		${WRKSRC}/core/Common/3dParty/icu/icu.pri \
@@ -140,17 +153,16 @@ post-patch:
 		${WRKSRC}/build_tools/scripts/build_server.py \
 		${WRKSRC}/document-server-package/Makefile
 	@${REINPLACE_CMD} -e 's|linux|freebsd|' -e 's|/etc|${LOCALBASE}/etc|' \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf.m4 \
-		${WRKSRC}/document-server-package/common/documentserver-example/supervisor/ds-example.conf.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4 \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-update-securelink.sh.m4
 	@${REINPLACE_CMD} 's|/var/www|${LOCALBASE}/www|' \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf.m4
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4
 	@${REINPLACE_CMD} -e 's|/var/lib|/var/db|' -e 's|/var/www|${LOCALBASE}/www|' \
 			  -e 's|/usr/share|${LOCALBASE}/share|' -e 's|/etc|${LOCALBASE}/etc|' \
 		${WRKSRC}/server/Common/config/production-freebsd.json \

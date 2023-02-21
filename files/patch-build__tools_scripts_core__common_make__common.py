@@ -1,6 +1,6 @@
 --- build_tools/scripts/core_common/make_common.py.orig	2021-11-16 07:07:24 UTC
 +++ build_tools/scripts/core_common/make_common.py
-@@ -8,17 +8,17 @@ import glob
+@@ -8,18 +8,18 @@ import glob
  import base
  import glob
  
@@ -20,11 +20,13 @@
 +#import hunspell
  import glew
 -import harfbuzz
+-import hyphen
 +#import harfbuzz
++import hyphen
+ import socket_io
  
  def check_android_ndk_macos_arm(dir):
-   if base.is_dir(dir + "/darwin-x86_64") and not base.is_dir(dir + "/darwin-arm64"):
-@@ -33,14 +33,15 @@ def make():
+@@ -35,16 +35,17 @@ def make():
        if base.is_dir(toolchain):
          check_android_ndk_macos_arm(toolchain + "/prebuilt")
  
@@ -44,5 +46,8 @@
 +#  hunspell.make(False)
 +#  harfbuzz.make()
    glew.make()
+-  hyphen.make()
++  hyphen.make()
+   socket_io.make()
+   
    if config.check_option("module", "mobile"):
-     curl.make()
