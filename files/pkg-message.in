@@ -88,16 +88,4 @@ you need to update the database schema:
     mysql -u onlyoffice -D onlyoffice -p < %%WWWDIR%%/documentserver/server/schema/mysql/upgrade/upgradev720.sql
 EOM
 }
-{ type: upgrade
-  minimum_version: 7.2.1.34
-  maximum_version: 7.3.2.8
-  message: <<EOM
-If you are upgrading onlyoffice-documentserver from a version prior to 7.3.2.8,
-you need to update the database schema:
-  For PostgreSQL:
-    psql -U postgres -d onlyoffice -f %%WWWDIR%%/documentserver/server/schema/postgresql/upgrade/upgradev730.sql
-  For MySQL:
-    mysql -u onlyoffice -D onlyoffice -p < %%WWWDIR%%/documentserver/server/schema/mysql/upgrade/upgradev730.sql
-EOM
-}
 ]

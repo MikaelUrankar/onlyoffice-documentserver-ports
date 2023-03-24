@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.3.2.8
+DISTVERSION=	7.3.3.49
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -47,7 +47,7 @@ USE_QT=		qmake:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	ONLYOFFICE
 GH_PROJECT=	DocumentServer
-GH_TAGNAME=	v7.3.2
+GH_TAGNAME=	v${DISTVERSION:C/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/}
 GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:core-fonts:v${DISTVERSION}:corefonts/core-fonts \
 		ONLYOFFICE:dictionaries:v${DISTVERSION}:dictionaries/dictionaries \
@@ -236,6 +236,7 @@ create-caches-tarball:
 	# do some cleanup first
 	${RM} -r  ${WRKDIR}/.npm/_logs ${WRKDIR}/.npm/_update-notifier-last-checked ${WRKDIR}/.cache/yarn/v6/.tmp
 	${FIND} ${WRKDIR}/.cache -type f -perm 755 -exec file {} \; | ${EGREP} "ELF|PE32+|Mach-O" | ${AWK} -F ':' '{print $$1}' | ${XARGS} ${RM}
+	${FIND} ${WRKDIR}/.pkg-cache -type f -perm 755 -exec file {} \; | ${EGREP} "ELF|PE32+|Mach-O" | ${AWK} -F ':' '{print $$1}' | ${XARGS} ${RM}
 
 	cd ${WRKDIR} && \
 		${TAR} czf ${PORTNAME}-${DISTVERSION}-npm-cache.tar.gz .npm .cache .pkg-cache
