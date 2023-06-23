@@ -1,10 +1,10 @@
-TIMESTAMP = 1686819780
+TIMESTAMP = 1687535922
 SHA256 (v8-8.9.255.25_all.tar.gz) = 54853ef93accc063a82a0dc29457b25c9b6d88315431d62e06ab1f84797c5f80
 SIZE (v8-8.9.255.25_all.tar.gz) = 72818814
 SHA256 (node-v16.13.0.tar.gz) = 9c00e5b6024cfcbc9105f9c58cf160762e78659a345d100c5bd80a7fb38c684f
 SIZE (node-v16.13.0.tar.gz) = 63735070
-SHA256 (node-v16.20.0.tar.gz) = 58c10af148bce26f17417f58ab8f71b91003cae87df17cc48e9f09c94edd908f
-SIZE (node-v16.20.0.tar.gz) = 66837258
+SHA256 (node-v16.20.0.tar.gz) = b08dcf8f2cbe19b22d0abc487c341647faee4bc246770cfdf2a7ccf5fa9292a9
+SIZE (node-v16.20.0.tar.gz) = 6045696
 SHA256 (optipng-0.7.7.tar.gz) = 4f32f233cef870b3f95d3ad6428bfe4224ef34908f1b42b0badf858216654452
 SIZE (optipng-0.7.7.tar.gz) = 2329555
 SHA256 (onlyoffice-documentserver-7.4.0.163-npm-cache.tar.gz) = e771ea67e2258cfedc9a45656a535fba6a8ac9ae0c8e96562efe3b1d2c092526
@@ -37,7 +37,7 @@ SHA256 (ONLYOFFICE-onlyoffice.github.io-b26d001664d771df4f663d2d3ba7dd4a188b6cab
 SIZE (ONLYOFFICE-onlyoffice.github.io-b26d001664d771df4f663d2d3ba7dd4a188b6cab_GH0.tar.gz) = 17009005
 SHA256 (ONLYOFFICE-document-server-package-v7.4.0.163_GH0.tar.gz) = d9fb262e19ecbbd9a13bbc9f1e2d40f7fcef1ee1548302f4f09c2410a7abae01
 SIZE (ONLYOFFICE-document-server-package-v7.4.0.163_GH0.tar.gz) = 155522
-SHA256 (hackers-painters-katana-parser-499118d3_GH0.tar.gz) = ed83020cbe07877c7323d475491803797fac12ce4086966011c81023b9852c4b
-SIZE (hackers-painters-katana-parser-499118d3_GH0.tar.gz) = 97209
+SHA256 (jasenhuang-katana-parser-be6df45_GH0.tar.gz) = 363ede45ba6d125fdb7323c43d34acd3d0ae9028ac18aec632eb6a623160f09a
+SIZE (jasenhuang-katana-parser-be6df45_GH0.tar.gz) = 97712
 SHA256 (google-gumbo-parser-aa91b27_GH0.tar.gz) = 1360f85c02fb2573a10f00abcddebc8f1ff277a16f66553439193af93afae335
 SIZE (google-gumbo-parser-aa91b27_GH0.tar.gz) = 2119417
