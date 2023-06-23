@@ -63,7 +63,7 @@ GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:DocumentBuilder:626d1e44db3d06ceb8298215a67ef0475912d89a:document_builder/DocumentBuilder \
 		ONLYOFFICE:onlyoffice.github.io:b26d001664d771df4f663d2d3ba7dd4a188b6cab:sdkjs_plugins_v1/onlyoffice.github.io \
 		ONLYOFFICE:document-server-package:v${DISTVERSION}:dsp/document-server-package \
-		hackers-painters:katana-parser:499118d3:hackers_painters_katana/core/Common/3dParty/html/katana-parser \
+		jasenhuang:katana-parser:be6df45:jasenhuang_katana/core/Common/3dParty/html/katana-parser \
 		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser
 
 OPTIONS_SINGLE=		DB
