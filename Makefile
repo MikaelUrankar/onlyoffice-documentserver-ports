@@ -137,13 +137,21 @@ post-extract:
 
 post-patch:
 	@${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|' \
+		${WRKSRC}/build_tools/tools/freebsd/automate.py \
+		${WRKSRC}/core/Common/3dParty/boost/boost.pri \
 		${WRKSRC}/core/Common/3dParty/icu/icu.pri \
+		${WRKSRC}/core/Common/3dParty/openssl/openssl.pri \
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/build/toolchain/gcc_toolchain.gni \
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/buildtools/third_party/libc++/BUILD.gn \
 		${WRKSRC}/core/DesktopEditor/fontengine/ApplicationFonts.cpp \
-		${WRKSRC}/build_tools/tools/freebsd/automate.py \
-		${WRKSRC}/core/Common/3dParty/boost/boost.pri \
-		${WRKSRC}/core/Common/3dParty/openssl/openssl.pri
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-jwt-status.sh.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-pluginsmanager.sh.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-update-securelink.sh.m4 \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf
 	@${REINPLACE_CMD} -e 's|%%CC%%|${CC}|' -e 's|%%CXX%%|${CXX}|' \
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/build/toolchain/gcc_toolchain.gni \
 		${WRKSRC}/core/Common/base.pri
@@ -153,21 +161,6 @@ post-patch:
 		${WRKSRC}/build_tools/scripts/build_js.py \
 		${WRKSRC}/build_tools/scripts/build_server.py \
 		${WRKSRC}/document-server-package/Makefile
-	@${REINPLACE_CMD} -e 's|linux|freebsd|' -e 's|/etc|${LOCALBASE}/etc|' \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-update-securelink.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-jwt-status.sh.m4
-	@${REINPLACE_CMD} 's|/var/www|${LOCALBASE}/www|' \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-update-securelink.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-static-gzip.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-jwt-status.sh.m4 \
-		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-pluginsmanager.sh.m4
 	@${REINPLACE_CMD} -e 's|/var/lib|/var/db|' -e 's|/var/www|${LOCALBASE}/www|' \
 			  -e 's|/usr/share|${LOCALBASE}/share|' -e 's|/etc|${LOCALBASE}/etc|' \
 		${WRKSRC}/server/Common/config/production-freebsd.json \

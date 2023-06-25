@@ -1,5 +1,14 @@
 --- document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4.orig	2023-06-20 13:47:11 UTC
 +++ document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4
+@@ -5,7 +5,7 @@ fi
+     ONLYOFFICE_DATA_CONTAINER=$1
+ fi
+ 
+-DIR="/var/www/M4_DS_PREFIX"
++DIR="%%LOCALBASE%%/www/M4_DS_PREFIX"
+ 
+ #Start generate AllFonts.js, font thumbnails and font_selection.bin
+ echo -n Generating AllFonts.js, please wait...
 @@ -49,11 +49,6 @@ echo Done
  
  echo Done

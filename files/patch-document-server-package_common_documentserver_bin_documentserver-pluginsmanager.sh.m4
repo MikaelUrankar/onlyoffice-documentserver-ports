@@ -29,8 +29,10 @@
 -	shift
  done
  
- PLUGIN_MANAGER="/var/www/M4_DS_PREFIX/server/tools/pluginsmanager"
- PLUGIN_DIR="/var/www/M4_DS_PREFIX/sdkjs-plugins/"
+-PLUGIN_MANAGER="/var/www/M4_DS_PREFIX/server/tools/pluginsmanager"
+-PLUGIN_DIR="/var/www/M4_DS_PREFIX/sdkjs-plugins/"
++PLUGIN_MANAGER="%%LOCALBASE%%/www/M4_DS_PREFIX/server/tools/pluginsmanager"
++PLUGIN_DIR="%%LOCALBASE%%/www/M4_DS_PREFIX/sdkjs-plugins/"
  
 -"${PLUGIN_MANAGER}" --directory=\"${PLUGIN_DIR}\" "${args[@]}"
 +"${PLUGIN_MANAGER}" --directory=\"${PLUGIN_DIR}\" "$@"

@@ -9,8 +9,8 @@
  
 -CONF_DIR="/etc/M4_DS_PREFIX"
 -DIR="/var/www/M4_DS_PREFIX"
-+CONF_DIR="/usr/local/etc/M4_DS_PREFIX"
-+DIR="/usr/local/www/M4_DS_PREFIX"
++CONF_DIR="%%LOCALBASE%%/etc/M4_DS_PREFIX"
++DIR="%%LOCALBASE%%/www/M4_DS_PREFIX"
  
  LOCAL_CONFIG="${CONF_DIR}/local.json"
  DEFAULT_CONFIG="${CONF_DIR}/default.json"

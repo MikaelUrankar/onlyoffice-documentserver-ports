@@ -6,8 +6,8 @@
  
 -DIR="/var/www/M4_DS_PREFIX"
 -NGINX_ONLYOFFICE_PATH="/etc/M4_DS_PREFIX/nginx"
-+DIR="/usr/local/www/M4_DS_PREFIX"
-+NGINX_ONLYOFFICE_PATH="/usr/local/etc/M4_DS_PREFIX/nginx"
++DIR="%%LOCALBASE%%/www/M4_DS_PREFIX"
++NGINX_ONLYOFFICE_PATH="%%LOCALBASE%%/etc/M4_DS_PREFIX/nginx"
  
 -cd ${DIR}
 +cd ${DIR} || exit 1

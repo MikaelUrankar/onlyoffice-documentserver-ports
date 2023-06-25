@@ -42,9 +42,9 @@
 -NGINX_CONF=/etc/M4_DS_PREFIX/nginx/ds.conf
 -LOCAL_CONF=/etc/M4_DS_PREFIX/local.json
 -JSON="/var/www/M4_DS_PREFIX/npm/json -q -f ${LOCAL_CONF}"
-+NGINX_CONF=/usr/local/etc/M4_DS_PREFIX/nginx/ds.conf
-+LOCAL_CONF=/usr/local/etc/M4_DS_PREFIX/local.json
-+JSON="/usr/local/www/M4_DS_PREFIX/npm/json -q -f ${LOCAL_CONF}"
++NGINX_CONF=%%LOCALBASE%%/etc/M4_DS_PREFIX/nginx/ds.conf
++LOCAL_CONF=%%LOCALBASE%%/etc/M4_DS_PREFIX/local.json
++JSON="%%LOCALBASE%%/www/M4_DS_PREFIX/npm/json -q -f ${LOCAL_CONF}"
  
  SECURE_LINK_SECRET=${SECURE_LINK_SECRET:-$(pwgen -s 20)}
  
