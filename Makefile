@@ -1,6 +1,7 @@
+# hyphen
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.4.1.36
+DISTVERSION=	7.5.0.125
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -27,7 +28,7 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		java:java/openjdk11 \
 		ninja:devel/ninja \
 		npm:www/npm-node16 \
-		${LOCALBASE}/lib/libcrypto.a:security/openssl30
+		${LOCALBASE}/lib/libcrypto.a:security/openssl
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
 		libcurl.so:ftp/curl \
 		libharfbuzz.so:print/harfbuzz \
@@ -60,7 +61,8 @@ GH_TUPLE=	ONLYOFFICE:core:v${DISTVERSION}:core/core \
 		ONLYOFFICE:onlyoffice.github.io:b26d001664d771df4f663d2d3ba7dd4a188b6cab:sdkjs_plugins_v1/onlyoffice.github.io \
 		ONLYOFFICE:document-server-package:v${DISTVERSION}:dsp/document-server-package \
 		jasenhuang:katana-parser:be6df45:jasenhuang_katana/core/Common/3dParty/html/katana-parser \
-		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser
+		google:gumbo-parser:aa91b27:google_gumbo/core/Common/3dParty/html/gumbo-parser \
+		hunspell:hyphen:73dd296:hunspell_hyphen/core/Common/3dParty/hyphen/hyphen
 
 OPTIONS_SINGLE=		DB
 OPTIONS_SINGLE_DB=	MYSQL PGSQL
@@ -93,7 +95,7 @@ SUB_LIST=	ETCDIR=${ETCDIR} \
 # node version used with "npm install pkg@5.5.1"
 NODE_VERSION_PKGFETCH=	16.13.0
 
-MAKE_ENV=	BUILD_NUMBER="8" \
+MAKE_ENV=	BUILD_NUMBER="36" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
 		PRODUCT_VERSION=${DISTVERSION:C/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/} \
 		BUILD_NUMBER=${DISTVERSION:C/^[0-9]+\.[0-9]+\.[0-9]+\.([0-9]+)/\1/}
