@@ -27,7 +27,7 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		gn:devel/gn \
 		java:java/openjdk11 \
 		ninja:devel/ninja \
-		npm:www/npm-node16 \
+		npm:www/npm-node18 \
 		${LOCALBASE}/lib/libcrypto.a:security/openssl
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
 		libcurl.so:ftp/curl \
@@ -94,8 +94,8 @@ SUB_LIST=	DS_GROUPNAME=${DS_GROUPNAME} \
 		PREFIX=${PREFIX} \
 		WWWDIR=${WWWDIR}
 
-# node version used with "npm install pkg@5.5.1"
-NODE_VERSION_PKGFETCH=	16.13.0
+# node version used with "npm install @yao-pkg/pkg@5.11.1"
+NODE_VERSION_PKGFETCH=	18.18.2
 
 MAKE_ENV=	BUILD_NUMBER="36" \
 		PKG_CACHE_PATH=${WRKDIR}/.pkg-cache \
@@ -181,11 +181,11 @@ do-build:
 
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt-cli
 	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install grunt
-	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install pkg@5.5.1
+	@cd ${WRKSRC}/server ; ${SETENV} ${MAKE_ENV} npm install @yao-pkg/pkg@5.11.1
 	@cd ${WRKSRC}/sdkjs  ; ${SETENV} ${MAKE_ENV} npm install grunt-cli
 	@cd ${WRKSRC}/sdkjs  ; ${SETENV} ${MAKE_ENV} npm install grunt
 	@cd ${WRKSRC} && ${PATCH} -N -s -i ${FILESDIR}/extra-patch-pkg-fetch_lib-es5_build.js || ${TRUE}
-	@cd ${WRKSRC} && ${PATCH} -N -s -i ${FILESDIR}/extra-patch-pkg-fetch_patches_node.v16.13.0.cpp.patch || ${TRUE}
+	@cd ${WRKSRC} && ${PATCH} -N -s -i ${FILESDIR}/extra-patch-pkg-fetch_patches_node.v${NODE_VERSION_PKGFETCH}.cpp.patch || ${TRUE}
 
 	cd ${WRKSRC}/build_tools/tools/freebsd ; ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} automate.py
 	cd ${WRKSRC}/document-server-package ; ${SETENV} ${MAKE_ENV} ${GMAKE} freebsd

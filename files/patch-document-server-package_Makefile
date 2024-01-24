@@ -8,7 +8,7 @@
  UNAME_M ?= $(shell uname -m)
  ifeq ($(UNAME_M),x86_64)
  	RPM_ARCH := x86_64
-@@ -143,6 +144,21 @@ else
+@@ -143,6 +144,22 @@ else
  		DS_EXAMLE := /var/www/$(DS_PREFIX)-example
  		DEV_NULL := /dev/null
  	endif
@@ -26,11 +26,12 @@
 +		DS_FILES := /var/db/$(DS_PREFIX)
 +		DS_EXAMLE := /usr/local/www/$(DS_PREFIX)-example
 +		DEV_NULL := /dev/null
++		PKG_TARGET := node18-freebsd-x64
 +	endif
  	ifeq ($(UNAME_S),Darwin)
  		PLATFORM := mac
  		SHARED_EXT := .dylib
-@@ -160,6 +176,12 @@ else
+@@ -160,6 +177,12 @@ else
  	ifeq ($(UNAME_M),x86_64)
  		ARCHITECTURE := 64
  	endif
@@ -43,7 +44,7 @@
  	ifneq ($(filter %86,$(UNAME_M)),)
  		ARCHITECTURE := 32
  	endif
-@@ -319,7 +341,7 @@ documentserver:
+@@ -319,7 +342,7 @@ documentserver:
  		
  documentserver:
  	mkdir -p $(DOCUMENTSERVER_FILES)
@@ -52,7 +53,7 @@
  
  	mkdir -p $(DOCUMENTSERVER_CONFIG)
  	mkdir -p $(DOCUMENTSERVER_CONFIG)/log4js
-@@ -328,25 +350,25 @@ documentserver:
+@@ -328,25 +351,25 @@ documentserver:
  	mv -f $(DOCUMENTSERVER)/server/Common/config/log4js/*.json $(DOCUMENTSERVER_CONFIG)/log4js/
  
  	# rename product specific folders
@@ -85,7 +86,7 @@
  	rm -fr $(3RD_PARTY_LICENSE_FILES)
  
  ifeq ($(PLATFORM),win)
-@@ -356,34 +378,34 @@ endif
+@@ -356,34 +379,34 @@ endif
  endif
  
  	[ -f $(LICENSE_FILE) ] \
@@ -130,7 +131,7 @@
  
  ifeq ($(PLATFORM),win)		
  	cd $(DOCUMENTSERVER)/npm && \
-@@ -397,7 +419,7 @@ documentserver-example:
+@@ -397,7 +420,7 @@ documentserver-example:
  
  documentserver-example:
  	mkdir -p $(DOCUMENTSERVER_EXAMPLE)
@@ -139,7 +140,7 @@
  	
  	mkdir -p $(DOCUMENTSERVER_EXAMPLE_CONFIG)
  
-@@ -406,7 +428,7 @@ documentserver-example:
+@@ -406,7 +429,7 @@ documentserver-example:
  	# Prevent for modification original config
  	chmod ug=r $(DOCUMENTSERVER_EXAMPLE_CONFIG)/*.json
  
@@ -148,7 +149,7 @@
  
  	/usr/bin/find $(DOCUMENTSERVER_EXAMPLE)/welcome -depth -type f -exec sed -i "s_{{year}}_$(shell date +"%Y")_g" {} \;
  
-@@ -499,6 +521,8 @@ $(DEB): $(DEB_DEPS) $(COMMON_DEPS) $(LINUX_DEPS) docum
+@@ -499,6 +522,8 @@ $(DEB): $(DEB_DEPS) $(COMMON_DEPS) $(LINUX_DEPS) docum
  
  %.exe:
  	cd $(@D) && $(ISCC) $(ISCC_PARAMS) common.iss
