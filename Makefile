@@ -95,6 +95,7 @@ SUB_LIST=	DS_GROUPNAME=${DS_GROUPNAME} \
 		WWWDIR=${WWWDIR}
 
 # node version used with "npm install @yao-pkg/pkg@5.11.1"
+# keep in sync with patch-build__tools_scripts_build__server.py and patch-document-server-package_Makefile
 NODE_VERSION_PKGFETCH=	18.18.2
 
 MAKE_ENV=	BUILD_NUMBER="36" \
