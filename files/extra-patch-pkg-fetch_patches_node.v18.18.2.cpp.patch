@@ -1,4 +1,4 @@
-https://github.com/vercel/pkg-fetch/blob/main/patches/node.v18.5.0.cpp.patch
+https://github.com/yao-pkg/pkg-fetch/blob/main/patches/node.v18.18.2.cpp.patch
 + local FreeBSD patches
 
 
