@@ -1,6 +1,12 @@
+# todo rm 
+# work/stage/usr/local/www/onlyoffice/documentserver/server/Common/config/production-freebsd.json.bak
+# work/stage/usr/local/www/onlyoffice/documentserver/server/Common/config/development-freebsd.json.bak
+# work/stage/usr/local/www/onlyoffice/documentserver/dictionaries/sl_SI/hyph_sl_SI.dic.bak
+
+
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	8.0.1.31
+DISTVERSION=	8.1.1.26
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -243,6 +249,10 @@ do-install:
 		 ${STAGEDIR}/var/db/onlyoffice/documentserver/App_Data/docbuilder \
 		 ${STAGEDIR}${WWWDIR}/Data \
 		 ${STAGEDIR}${WWWDIR}/documentserver/fonts
+
+# Remove bak file
+	${RM} ${STAGEDIR}${WWWDIR}/documentserver/server/Common/config/*.bak
+	${RM} ${STAGEDIR}${WWWDIR}/documentserver/dictionaries/sl_SI/hyph_sl_SI.dic.bak
 
 create-caches-tarball:
 	# do some cleanup first
