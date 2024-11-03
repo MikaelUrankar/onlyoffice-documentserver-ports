@@ -6,7 +6,7 @@
 
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	8.1.1.26
+DISTVERSION=	8.2.0.143
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -77,7 +77,8 @@ MYSQL_USES+=	mysql:client
 PGSQL_USES+=	pgsql
 PGSQL_VARS=	WANT_PGSQL=client
 
-BINARY_ALIAS=	python=${PYTHON_CMD}
+BINARY_ALIAS=	python=${PYTHON_CMD} \
+		strip=true
 USE_LDCONFIG=	yes
 
 WWWDIR=		${PREFIX}/www/onlyoffice
@@ -155,6 +156,7 @@ post-patch:
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/build/toolchain/gcc_toolchain.gni \
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/buildtools/third_party/libc++/BUILD.gn \
 		${WRKSRC}/core/DesktopEditor/fontengine/ApplicationFonts.cpp \
+		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-flush-cache.sh.m4 \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-generate-allfonts.sh.m4 \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-jwt-status.sh.m4 \
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-pluginsmanager.sh.m4 \

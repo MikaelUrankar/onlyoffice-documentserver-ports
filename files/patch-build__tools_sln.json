@@ -1,6 +1,6 @@
 --- build_tools/sln.json.orig	2024-09-11 13:02:49 UTC
 +++ build_tools/sln.json
-@@ -42,19 +42,19 @@
+@@ -45,14 +45,14 @@
  
      "[!no_x2t]core/X2tConverter/build/Qt/X2tConverter.pro",
  
@@ -18,26 +18,9 @@
 -    "[win,linux,mac,!linux_arm64]core/OfficeCryptReader/ooxml_crypt/ooxml_crypt.pro",
 +    "[win,linux,freebsd,mac,!linux_arm64]core/OfficeCryptReader/ooxml_crypt/ooxml_crypt.pro",
  
-     "[win,linux,mac,!no_tests]core/DesktopEditor/vboxtester/vboxtester.pro",
--    "[win,linux,mac,!no_tests]core/Test/Applications/StandardTester/standardtester.pro",
--    "[win,linux,mac,!no_tests]core/Test/Applications/x2tTester/x2ttester.pro",
--    "[win,linux,mac,!no_tests]core/Test/Applications/MetafileTester/MetafileTester.pro"
-+    "[win,linux,freebsd,mac,!no_tests]core/Test/Applications/StandardTester/standardtester.pro",
-+    "[win,linux,freebsd,mac,!no_tests]core/Test/Applications/x2tTester/x2ttester.pro",
-+    "[win,linux,freebsd,mac,!no_tests]core/Test/Applications/MetafileTester/MetafileTester.pro"
+     "spell",
  
-   ],
- 
-@@ -71,7 +71,7 @@
-   ],
-   
-   "spell" : [
--    "[win,linux,mac]core/Common/3dParty/hunspell/qt/hunspell.pro"
-+    "[win,linux,freebsd,mac]core/Common/3dParty/hunspell/qt/hunspell.pro"
-   ],
- 
-   "desktop" : [
-@@ -96,6 +96,6 @@
+@@ -98,6 +98,6 @@
    ],
  
    "osign" : [
