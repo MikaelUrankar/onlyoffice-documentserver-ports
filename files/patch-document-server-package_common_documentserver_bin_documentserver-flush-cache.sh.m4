@@ -10,8 +10,9 @@
 -API_PATH="/var/www/M4_DS_PREFIX/web-apps/apps/api/documents/api.js"
 +API_PATH="%%LOCALBASE%%/www/M4_DS_PREFIX/web-apps/apps/api/documents/api.js"
  cp -f ${API_PATH}.tpl ${API_PATH}
- sed -i "s/{{HASH_POSTFIX}}/${HASH}/g" ${API_PATH}
+-sed -i "s/{{HASH_POSTFIX}}/${HASH}/g" ${API_PATH}
 -chown ds:ds ${API_PATH}
++sed -i '' "s/{{HASH_POSTFIX}}/${HASH}/g" ${API_PATH}
 +chown onlyoffice:onlyoffice ${API_PATH}
  rm -f ${API_PATH}.gz
  
