@@ -1,6 +1,6 @@
 PORTNAME=	onlyoffice-documentserver
 DISTVERSIONPREFIX=	v
-DISTVERSION=	8.2.0.143
+DISTVERSION=	8.3.1.25
 CATEGORIES=	www
 MASTER_SITES+=	LOCAL/mikael/v8/:source1 \
 		LOCAL/mikael/onlyoffice/:source2 \
@@ -29,11 +29,15 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR} \
 		npm:www/npm-node18 \
 		${LOCALBASE}/lib/libcrypto.a:security/openssl
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
+		libetonyek-0.1.so:graphics/libetonyek01 \
 		libcurl.so:ftp/curl \
 		libharfbuzz.so:print/harfbuzz \
 		libiconv.so:converters/libiconv \
-		libicutu.so:devel/icu
+		libicutu.so:devel/icu \
+		libodfgen-0.1.so:textproc/libodfgen01 \
+		librevenge-0.0.so:textproc/librevenge
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}supervisor>0:sysutils/py-supervisor@${PY_FLAVOR} \
+		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		gsed:textproc/gsed \
 		nginx:www/nginx \
 		pwgen:sysutils/pwgen \
@@ -144,6 +148,7 @@ post-extract:
 post-patch:
 	@${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|' \
 		${WRKSRC}/build_tools/tools/freebsd/automate.py \
+		${WRKSRC}/core/Apple/IWork.pro \
 		${WRKSRC}/core/Common/3dParty/boost/boost.pri \
 		${WRKSRC}/core/Common/3dParty/icu/icu.pri \
 		${WRKSRC}/core/Common/3dParty/openssl/openssl.pri \
@@ -157,7 +162,7 @@ post-patch:
 		${WRKSRC}/document-server-package/common/documentserver/bin/documentserver-update-securelink.sh.m4 \
 		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-converter.conf \
 		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-docservice.conf \
-		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf
+		${WRKSRC}/document-server-package/common/documentserver/supervisor/ds-metrics.conf \
 	@${REINPLACE_CMD} -e 's|%%CC%%|${CC}|' -e 's|%%CXX%%|${CXX}|' \
 		${WRKSRC}/core/Common/3dParty/v8_89/v8/build/toolchain/gcc_toolchain.gni \
 		${WRKSRC}/core/Common/base.pri
